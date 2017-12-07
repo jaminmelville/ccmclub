@@ -1,0 +1,14 @@
+.ccmc-breadcrumbs {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+
+  &__current {
+    color: $primary-color!important; // Overriding foudnation.
+  }
+
+  &__parent {
+    color: white!important; // Overriding foudnation.
+  }
+
+}

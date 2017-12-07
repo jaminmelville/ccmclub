@@ -1,0 +1,9 @@
+.page {
+  &__title {
+    font-size: 4rem;
+    color: $primary-color;
+  }
+  &__image {
+    width: 300px;
+  }
+}

@@ -1,0 +1,51 @@
+@import 'foundation-settings';
+@import '../../../node_modules/foundation-sites/scss/foundation';
+@import '../../../node_modules/font-awesome/css/font-awesome.min.css';
+@import url('https://fonts.googleapis.com/css?family=Coda');
+
+@include foundation-flex-grid;
+@include foundation-flex-classes;
+@include foundation-everything;
+
+@import 'animation';
+@import 'colors';
+@import 'components/background';
+@import 'components/breadcrumbs';
+@import 'components/content';
+@import 'components/countdown';
+@import 'components/event';
+@import 'components/events';
+@import 'components/home';
+@import 'components/loader';
+@import 'components/map';
+@import 'components/menu';
+@import 'components/page';
+@import 'components/photos';
+@import 'components/video';
+
+::selection {
+  background: $primary-color;
+}
+
+body {
+  color: white;
+  overflow-x: hidden;
+  background-color: black;
+}
+
+img {
+  max-width: 100%;
+}
+
+label {
+  color: white;
+}
+
+ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.page {
+  height: 100vh;
+}

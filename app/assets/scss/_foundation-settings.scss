@@ -1,0 +1,9 @@
+$foundation-palette: (
+  primary: #ff6d22,
+  secondary: #767676,
+  success: #1779ba,
+  warning: #ffae00,
+  alert: #cc4b37,
+);
+
+$menu-item-color-active: map-get($foundation-palette, primary);

@@ -1,0 +1,15 @@
+.ccmc-menu {
+  position: relative;
+  z-index: 1;
+
+  li a {
+    text-transform: uppercase;
+    transition: color 0.5s;
+    color: white;
+
+    &:hover {
+      color: map-get($foundation-palette, primary);
+    }
+  }
+
+}

@@ -1,0 +1,31 @@
+.home {
+
+  &__social {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  &__social-icon {
+    color: white;
+    font-size: 2rem;
+    transition: color 0.5s;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__logo {
+    width: 250px;
+  }
+
+  &__title {
+    font-family: 'Coda', cursive;
+    font-weight: normal;
+    line-height: 1.2em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+}

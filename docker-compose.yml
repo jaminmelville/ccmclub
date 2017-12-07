@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  wordpress:
+    image: visiblevc/wordpress:0.16.0-php7.1
+    restart: always
+    ports:
+      - 15000:80
+#      - 443:443
+    volumes:
+      - ./data:/data
+      - ./theme:/app/wp-content/themes/ccmclub
+    environment:
+      DB_NAME: wordpress
+      DB_PASS: ${PASSWORD}
+      ADMIN_EMAIL: benmelville87@gmail.com
+      SERVER_NAME: ccmclub.dev
+      WP_DEBUG: 'true'
+      WP_DEBUG_DISPLAY: 'true'
+      PERMALINKS: /%postname%/
+      PLUGINS: >-
+        amazon-web-services,
+        acf-field-date-time-picker,
+        advanced-custom-fields,
+        acf-to-rest-api,
+        amazon-s3-and-cloudfront,
+        wordpress-seo,
+  db:
+    image: mariadb:10
+    restart: always
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${PASSWORD}
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${PASSWORD}
+    ports:
+      - 22222:80
+volumes:
+  data:
