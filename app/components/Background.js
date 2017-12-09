@@ -36,21 +36,21 @@ class Background extends Component {
           <Route
             path="/events/:event/map"
             render={(props) => {
-              const url = '/wp-content/themes/ccmclub/images/map.jpg';
+              const url = 'https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/map.jpg';
               return this.generateMarkup(url);
             }}
           />
           <Route
             path="/events/:event/video"
             render={(props) => {
-              const url = '/wp-content/themes/ccmclub/images/video.jpg';
+              const url = 'https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/video.jpg';
               return this.generateMarkup(url);
             }}
           />
           <Route
             path="/events/:event/photos"
             render={(props) => {
-              const url = '/wp-content/themes/ccmclub/images/camera.jpg';
+              const url = 'https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/photos.jpg';
               return this.generateMarkup(url);
             }}
           />
@@ -64,14 +64,14 @@ class Background extends Component {
           <Route
             path="/events/"
             render={(props) => {
-              const url = '/wp-content/themes/ccmclub/images/bike.jpg';
+              const url = 'https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/events.jpg';
               return this.generateMarkup(url);
             }}
           />
           <Route
             path="/contact"
             render={(props) => {
-              const url = '/wp-content/themes/ccmclub/images/contact.jpg';
+              const url = 'https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/contact.jpg';
               return this.generateMarkup(url);
             }}
           />
@@ -86,7 +86,7 @@ class Background extends Component {
             path="/"
             exact
             render={(props) => {
-              const url = '/wp-content/themes/ccmclub/images/run.jpg';
+              const url = 'https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/home.jpg';
               return this.generateMarkup(url);
             }}
           />

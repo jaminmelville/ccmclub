@@ -4,7 +4,7 @@ const Loader = function Loader() {
   return (
     <div className="text-center loader">
       <img
-        src="/wp-content/themes/ccmclub/images/loader.png"
+        src="https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/loader.png"
         alt="loader"
         className="loader__image"
       />

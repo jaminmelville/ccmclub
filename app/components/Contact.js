@@ -87,7 +87,7 @@ export default class Contact extends React.Component {
                 className="contact__value"
                 href={`mailto:${this.state.details.email}`}
               >
-                {this.state.details.email}
+                email
               </a>
             </div>
           </div>

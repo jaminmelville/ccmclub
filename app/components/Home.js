@@ -12,7 +12,7 @@ export default class Home extends Component {
         </div>
         <div className="grid-x grid-margin-x align-middle align-center grid-margin-y">
           <div className="small-12 medium-shrink cell text-center">
-            <img className="home__logo" src="/wp-content/themes/ccmclub/images/logo.png" alt="logo" />
+            <img className="home__logo" src="https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/logo.png" alt="logo" />
           </div>
           <div className="auto">
             <h1 className="home__title">

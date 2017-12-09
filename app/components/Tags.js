@@ -9,7 +9,7 @@ export default class Tags extends Component {
         className="tags__item"
         key={tag.term_id}
         title={tag.name}
-        src={`/wp-content/themes/ccmclub/images/${tag.name}-icon.png}`}
+        src={`https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/${tag.name}-icon.png`}
         alt=""
       />
     ));
