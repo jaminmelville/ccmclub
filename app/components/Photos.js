@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Portal } from 'react-portal';
 import InfiniteScroll from 'react-infinite-scroller';
 import axios from 'axios';
+import Lightbox from 'react-images';
 import Loader from './Loader';
+import Content from './Content';
+
 
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions,
 jsx-a11y/no-static-element-interactions */
@@ -15,7 +17,7 @@ export default class Photos extends Component {
       images: [],
       loading: true,
       modal: null,
-      showing: 20,
+      showing: 24,
     };
   }
 
@@ -42,57 +44,37 @@ export default class Photos extends Component {
         </div>
       </li>
     ));
-    let modal;
-    if (this.state.modal) {
-      const index = this.state.images.indexOf(this.state.modal);
-      const next = this.state.images[(index + 1) % this.state.images.length];
-      const previous = this.state.images[index > 0 ? index - 1 : this.state.images.length - 1];
-      modal = (
-        <Portal>
-          <div
-            className="photos__portal"
-            onClick={() => {
-              this.setState({ modal: null });
-            }}
-          >
-            <div
-              className="photos__portal-content"
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-            >
-              <i
-                className="photos__portal-close fa fa-times"
-                onClick={() => {
-                  this.setState({ modal: null });
-                }}
-              />
-              <i
-                className="photos__portal-previous fa fa-chevron-left"
-                onClick={() => {
-                  this.setState({ modal: previous });
-                }}
-              />
-              <i
-                className="photos__portal-next fa fa-chevron-right"
-                onClick={() => {
-                  this.setState({ modal: next });
-                }}
-              />
-              <img className="photos__portal-img" src={this.state.modal.images[0].source} alt="" />
-            </div>
-          </div>
-        </Portal>
-      );
-    }
+    const index = this.state.images.indexOf(this.state.modal);
+    const next = this.state.images[(index + 1) % this.state.images.length];
+    const previous = this.state.images[index > 0 ? index - 1 : this.state.images.length - 1];
+    const imagesData = this.state.images.map((image) => {
+      const srcSet = image.images.map(i => `${i.source} ${i.width}w`);
+      return {
+        src: image.images[0].source,
+        srcSet,
+      };
+    });
     return (
-      <div>
-        {modal}
+      <Content title={`${this.props.data.title.rendered} Photos`}>
+        <Lightbox
+          isOpen={!!this.state.modal}
+          images={imagesData}
+          currentImage={index}
+          onClose={() =>
+            this.setState({ modal: null })
+          }
+          onClickPrev={() =>
+            this.setState({ modal: previous })
+          }
+          onClickNext={() =>
+            this.setState({ modal: next })
+          }
+        />
         <InfiniteScroll
           element="ul"
           className="grid-x grid-margin-x grid-margin-y"
           loadMore={() => {
-            this.setState({ showing: this.state.showing + 20 });
+            this.setState({ showing: this.state.showing + 24 });
           }}
           hasMore={this.state.showing < this.state.images.length}
           loader={<Loader />}
@@ -101,7 +83,7 @@ export default class Photos extends Component {
         </InfiniteScroll>
         {this.state.loading && <Loader />}
         <br />
-      </div>
+      </Content>
     );
   }
 

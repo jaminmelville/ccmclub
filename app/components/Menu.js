@@ -9,12 +9,17 @@ import { Foundation } from 'foundation-sites/js/foundation.core';
 import { ResponsiveMenu } from 'foundation-sites/js/foundation.responsiveMenu.js';
 import { ResponsiveToggle } from 'foundation-sites/js/foundation.responsiveToggle.js';
 import { AccordionMenu } from 'foundation-sites/js/foundation.accordionMenu.js';
-Foundation.addToJquery($);
 Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
 Foundation.plugin(AccordionMenu, 'AccordionMenu');
 Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
+Foundation.addToJquery($);
 
 class Menu extends Component {
+
+  constructor(props, context) {
+    super(props, context);
+    this.menus = {};
+  }
 
   componentDidMount() {
     $(document).foundation();
@@ -24,14 +29,32 @@ class Menu extends Component {
     });
   }
 
+  setOpenMenus = (props) => {
+    const pathname = props.location.pathname;
+    Object.keys(this.menus).reverse().forEach((key) => {
+      if (pathname.startsWith(key)) {
+        const $menu = $(this.menus[key]);
+        if (!$menu.hasClass('is-active')) {
+          $(this.menu).foundation('down', $menu);
+        }
+      }
+    });
+  }
+
+  componentWillUpdate(nextProps) {
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      this.setOpenMenus(nextProps);
+    }
+  }
+
   generateChildren = (items, nested = false) => {
     const children = items.map((item) => {
       const pathname = this.props.location.pathname;
-      const isActive = false && pathname === item.url; // @TODO: Figure out activeness.
+      const isActive = pathname.startsWith(item.url); // @TODO: Figure out activeness.
       return (
         <li
           key={item.name}
-          className={classNames({ 'is-active': isActive })}
+          // className={classNames({ 'is-active': isActive })}
         >
           {item.url.startsWith('/') ?
             <Link to={item.url}>
@@ -42,10 +65,12 @@ class Menu extends Component {
               {item.name}
             </a>
           }
-          {typeof(item.children) !== "undefined" &&
-
+          {typeof(item.children) !== "undefined" && item.children.length > 0 &&
             <ul
-              className="vertical menu nested"
+              className={classNames('vertical menu nested', { 'is-active': isActive })}
+              ref={(e) => {
+                this.menus[item.url] = e;
+              }}
             >
               {this.generateChildren(item.children, true)}
             </ul>
@@ -70,7 +95,7 @@ class Menu extends Component {
         children.push({ name: 'Photos', url: `/events/${slug}/photos` });
       }
       if (event.acf.results_url) {
-        children.push({ name: 'Results', url: props.data.acf.results_url });
+        children.push({ name: 'Results', url: event.acf.results_url });
       }
       return {
         name: event.title.rendered,

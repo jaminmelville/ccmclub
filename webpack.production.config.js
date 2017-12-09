@@ -18,7 +18,7 @@ const config = {
   output: {
     filename: 'bundle.[chunkhash].js',
     path: resolve(__dirname, 'theme/dist'),
-    publicPath: '',
+    publicPath: '/wp-content/themes/ccmclub/dist/',
   },
 
   plugins: [
@@ -37,7 +37,7 @@ const config = {
       beautify: false
     }),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
-    new ExtractTextPlugin({ filename: './styles/style.css', disable: false, allChunks: true }),
+    new ExtractTextPlugin({ filename: 'styles/style.css', disable: false, allChunks: true }),
     new CopyWebpackPlugin([{ from: './vendors', to: 'vendors' }]),
   ],
 

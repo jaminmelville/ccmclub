@@ -1,10 +1,6 @@
 .ccmc-breadcrumbs {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-
   &__current {
-    color: $primary-color!important; // Overriding foudnation.
+    color: map-get($foundation-palette, primary)!important; // Overriding foudnation.
   }
 
   &__parent {

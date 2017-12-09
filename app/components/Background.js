@@ -26,9 +26,6 @@ class Background extends Component {
   }
 
   render() {
-    if (this.props.pages.length === 0) {
-      return null;
-    }
     return (
       <ReactCSSTransitionGroup
         transitionName="background"

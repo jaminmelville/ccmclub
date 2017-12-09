@@ -8,9 +8,9 @@
 @include foundation-everything;
 
 @import 'animation';
-@import 'colors';
 @import 'components/background';
 @import 'components/breadcrumbs';
+@import 'components/contact';
 @import 'components/content';
 @import 'components/countdown';
 @import 'components/event';
@@ -21,12 +21,14 @@
 @import 'components/menu';
 @import 'components/page';
 @import 'components/photos';
-@import 'components/video';
+@import 'components/tags';
 
 ::selection {
-  background: $primary-color;
+  background: map-get($foundation-palette, primary);
 }
-
+:focus{
+  outline: none !important;
+}
 body {
   color: white;
   overflow-x: hidden;
@@ -46,6 +48,18 @@ ul {
   list-style-type: none;
 }
 
-.page {
-  height: 100vh;
+iframe {
+  border: none;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+.button.hollow {
+  color: white;
+}
+
+html, body, #root, #root > div, .off-canvas-content {
+  height: 100%;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from 'react-foundation';
 import axios from 'axios';
 import Loader from './Loader';
+import Content from './Content';
 
 export default class Contact extends React.Component {
 
@@ -59,33 +59,55 @@ export default class Contact extends React.Component {
 
   render() {
     return (
-      <div>
+      <Content title="Contact">
         {this.state.loading ?
           <Loader />
           :
-          <div className="grid-x grid-padding-x grid-padding-y align-middle">
-            <div className="medium-6 cell">
-              <div>Name: {this.state.details.name}</div>
-              <div>Phone: {this.state.details.phone}</div>
-              <div>Email: {this.state.details.email}</div>
+          <div className="grid-x align-center">
+            <div className="cell small-12 medium-shrink contact__item">
+              <i className="contact__icon fa fa-4x fa-user" />
+              <span
+                className="contact__value"
+              >
+                {this.state.details.name}
+              </span>
             </div>
-            <div className="medium-6 cell">
-              <form onSubmit={this.handleSubmit}>
-                <div>
-                  <label htmlFor="title">Name:</label>
-                  <input name="title" />
-                </div>
-                <div>
-                  <label htmlFor="body">Body:</label>
-                  <textarea name="body" />
-                </div>
-                <Button className="button large alert">Submit</Button>
-              </form>
+            <div className="cell small-12 medium-shrink contact__item">
+              <i className="contact__icon fa fa-4x fa-mobile" />
+              <a
+                className="contact__value"
+                href={`tel:${this.state.details.phone}`}
+              >
+                {this.state.details.phone}
+              </a>
+            </div>
+            <div className="cell small-12 medium-shrink contact__item">
+              <i className="contact__icon fa fa-4x fa-envelope" />
+              <a
+                className="contact__value"
+                href={`mailto:${this.state.details.email}`}
+              >
+                {this.state.details.email}
+              </a>
             </div>
           </div>
         }
-      </div>
+      </Content>
     );
   }
 
 }
+
+/* <form onSubmit={this.handleSubmit}>
+  <div className="medium-6 cell">
+    <div>
+      <label htmlFor="title">Name:</label>
+      <input name="title" />
+    </div>
+    <div>
+      <label htmlFor="body">Body:</label>
+      <textarea name="body" />
+    </div>
+    <Button className="button large alert">Submit</Button>
+  </div>
+</form> */

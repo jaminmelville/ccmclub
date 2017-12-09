@@ -36,8 +36,23 @@ export default class Countdown extends Component {
     return (
       <div className="countdown">
         <div className="countdown__values">
-          {pad(days)}|{pad(hours)}|{pad(minutes)}|{pad(seconds)}
-        </div> to go
+          <div className="countdown__value">
+            <div className="countdown__number">{pad(days)}</div>
+            <div className="countdown__unit">Days</div>
+          </div>
+          <div className="countdown__value">
+            <div className="countdown__number">{pad(hours)}</div>
+            <div className="countdown__unit">Hours</div>
+          </div>
+          <div className="countdown__value">
+            <div className="countdown__number">{pad(minutes)}</div>
+            <div className="countdown__unit">Mins</div>
+          </div>
+          <div className="countdown__value">
+            <div className="countdown__number">{pad(seconds)}</div>
+            <div className="countdown__unit">Secs</div>
+          </div>
+        </div>
       </div>
     );
   }

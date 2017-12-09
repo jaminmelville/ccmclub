@@ -1,0 +1,38 @@
+.contact {
+
+  &__item {
+    margin-bottom: $size;
+    text-align: center;
+
+    @include breakpoint(small only) {
+      padding: 2 * $size 0;
+      border-bottom: 1px solid;
+    }
+
+    @include breakpoint(medium) {
+      padding: 0 2 * $size;
+      border-right: 1px solid;
+    }
+    &:last-of-type {
+      border: none;
+    }
+  }
+
+  &__value {
+    vertical-align: bottom;
+    font-size: 1rem;
+    display: block;
+    color: white;
+    &:hover {
+      transition: color 0.5s;
+      color: map-get($foundation-palette, primary);
+    }
+  }
+
+  &__icon {
+    text-align: center;
+    color: map-get($foundation-palette, primary);
+    width: 3rem;
+    margin-bottom: 0.5rem;
+  }
+}

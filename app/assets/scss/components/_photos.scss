@@ -10,7 +10,7 @@
     width: 100%;
 
     &:hover {
-      border-color: $primary-color;
+      border-color: map-get($foundation-palette, primary);
     }
   }
 
@@ -22,59 +22,6 @@
     width: 100%;
     height: 100%;
     cursor: pointer;
-  }
-
-  &__portal {
-    z-index: 5;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 3rem;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  &__portal-content {
-    background-color: white;
-    position: relative;
-  }
-
-  &__portal-img {
-    padding: 2rem;
-    max-width:100%;
-    height:auto;
-    max-height:calc(100vh - 2rem);
-  }
-
-  &__portal-close {
-    position: absolute;
-    color: black;
-    top: 0.25rem;
-    right: 0.25rem;
-    font-size: 2rem;
-    cursor: pointer;
-  }
-
-  &__portal-previous {
-      position: absolute;
-      color: black;
-      top: 50%;
-      left: 0.25rem;
-      font-size: 2rem;
-      cursor: pointer;
-  }
-
-  &__portal-next {
-      position: absolute;
-      color: black;
-      top: 50%;
-      right: 0.25rem;
-      font-size: 2rem;
-      cursor: pointer;
   }
 
 }

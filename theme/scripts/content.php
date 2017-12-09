@@ -48,6 +48,17 @@
   				'preview_size' => 'thumbnail',
   				'library' => 'all',
   			),
+  			array (
+  				'key' => 'field_5a1cfd5cf0e3f',
+  				'label' => 'Feature image',
+  				'name' => 'feature_image',
+  				'type' => 'image',
+  				'instructions' => 'Choose the featured image',
+  				'required' => 1,
+  				'save_format' => 'object',
+  				'preview_size' => 'thumbnail',
+  				'library' => 'all',
+  			),
   		),
   		'location' => array (
   			array (
@@ -161,7 +172,7 @@
   				'field_type' => 'checkbox',
   				'allow_null' => 0,
   				'load_save_terms' => 0,
-  				'return_format' => 'id',
+  				'return_format' => 'object',
   				'multiple' => 0,
   			),
   			array (

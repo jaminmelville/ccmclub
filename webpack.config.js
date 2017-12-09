@@ -11,7 +11,7 @@ const config = {
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://ccmclub.dev',
+    'webpack-dev-server/client?http://ccmclub.test',
     'webpack/hot/only-dev-server',
     './main.js',
     './assets/scss/main.scss',
@@ -30,7 +30,7 @@ const config = {
     contentBase: resolve(__dirname, 'build'),
     inline: true,
     publicPath: '/',
-    host: 'ccmclub.dev',
+    host: 'ccmclub.test',
     historyApiFallback: { index: 'index.html' },
   },
 
@@ -83,7 +83,7 @@ const config = {
     new webpack.optimize.ModuleConcatenationPlugin(),
     new ExtractTextPlugin({ filename: './styles/style.css', disable: false, allChunks: true }),
     new CopyWebpackPlugin([{ from: 'vendors', to: 'vendors' }]),
-    new OpenBrowserPlugin({ url: 'http://ccmclub.dev' }),
+    new OpenBrowserPlugin({ url: 'http://ccmclub.test' }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',

@@ -1,17 +1,47 @@
 .events {
+
+  &__button {
+    margin-bottom: 0;
+  }
+
   &__item {
-    border-bottom: 2px solid white;
-    margin: 1rem;
-    padding: 1rem;
-    &:last-child {
-      border-bottom: none;
+    padding: 2 * $size 0;
+
+    &:first-child {
+      padding-top: $size;
+    }
+
+    @include breakpoint(small only) {
+      border-bottom: 1px solid white;
+
+      &:last-child {
+        border-bottom: none;
+      }
     }
   }
+
   &__link {
     color: white;
     transition: color 0.5s;
+
     &:hover {
-      color: $primary-color;
+      color: map-get($foundation-palette, primary);
     }
   }
+
+  &__date {
+    margin: -0.3rem 0;
+  }
+
+  &__title {
+    line-height: 1em;
+  }
+
+  &__image {
+    margin-right: 2rem;
+    @include breakpoint(small only) {
+      margin-right: 1rem;
+    }
+  }
+
 }

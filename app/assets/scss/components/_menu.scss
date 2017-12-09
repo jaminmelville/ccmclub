@@ -3,13 +3,22 @@
   z-index: 1;
 
   li a {
-    text-transform: uppercase;
     transition: color 0.5s;
     color: white;
+    text-transform: uppercase;
 
     &:hover {
       color: map-get($foundation-palette, primary);
     }
   }
 
+  &__button {
+      position: absolute;
+      top: 1.5 * $size;
+      left: $size;
+      z-index: 2;
+  }
+  .has-submenu-toggle > a {
+    font-weight: bold;
+  }
 }

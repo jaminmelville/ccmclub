@@ -1,5 +1,16 @@
 .map {
   width: 100%;
-  height: 90vh;
-  border: none;
+  padding-top: 150%;
+  @include breakpoint(medium) {
+    padding-top: 56.25%;
+  }
+  position: relative;
+
+  &__frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }

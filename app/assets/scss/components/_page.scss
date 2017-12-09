@@ -1,9 +1,10 @@
 .page {
-  &__title {
-    font-size: 4rem;
-    color: $primary-color;
-  }
   &__image {
-    width: 300px;
+    width: 100%;
+    margin: $size 0;
+    
+    @include breakpoint(medium) {
+      margin: $size 0 3 * $size;
+    }
   }
 }
