@@ -12,7 +12,15 @@ class Background extends Component {
     const page = this.props.pages.filter(p =>
       p.slug === slug,
     ).pop();
-    return page.acf.background.sizes.large;
+    let image = false;
+    try {
+      image = page.acf.background.sizes.large;
+    } catch (e) {
+        /* eslint-disable */
+        console.error(e);
+        /* eslint-enable */
+    }
+    return image;
   }
 
   generateMarkup(url) {

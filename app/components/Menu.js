@@ -52,14 +52,13 @@ class Menu extends Component {
       const pathname = this.props.location.pathname;
       const isActive = pathname.startsWith(item.url); // @TODO: Figure out activeness.
       return (
-        <li
-          key={item.name}
-          // className={classNames({ 'is-active': isActive })}
-        >
+        <li key={item.name}>
+          {/* eslint-disable react/no-danger */}
           {item.url.startsWith('/') ?
-            <Link to={item.url}>
-              {item.name}
-            </Link>
+            <Link
+              to={item.url}
+                dangerouslySetInnerHTML={{ __html: item.name }}
+            />
           :
             <a href={item.url} target="_blank">
               {item.name}
@@ -91,9 +90,9 @@ class Menu extends Component {
       if (event.acf.map_embed) {
         children.push({ name: 'Map', url: `/events/${slug}/map` });
       }
-      if (event.acf.facebook_album_url) {
-        children.push({ name: 'Photos', url: `/events/${slug}/photos` });
-      }
+      // if (event.acf.facebook_album_url) {
+      //   children.push({ name: 'Photos', url: `/events/${slug}/photos` });
+      // }
       if (event.acf.results_url) {
         children.push({ name: 'Results', url: event.acf.results_url });
       }

@@ -14,7 +14,7 @@ services:
       DB_NAME: wordpress
       DB_PASS: ${PASSWORD}
       ADMIN_EMAIL: benmelville87@gmail.com
-      SERVER_NAME: ccmclub.dev
+      SERVER_NAME: ccmclub.testq
       WP_DEBUG: 'true'
       WP_DEBUG_DISPLAY: 'true'
       PERMALINKS: /%postname%/

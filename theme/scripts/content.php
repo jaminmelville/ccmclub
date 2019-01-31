@@ -49,12 +49,11 @@
   				'library' => 'all',
   			),
   			array (
-  				'key' => 'field_5a1cfd5cf0e3f',
+  				'key' => 'field_5a1cfd5cf0ejf',
   				'label' => 'Feature image',
   				'name' => 'feature_image',
   				'type' => 'image',
   				'instructions' => 'Choose the featured image',
-  				'required' => 1,
   				'save_format' => 'object',
   				'preview_size' => 'thumbnail',
   				'library' => 'all',

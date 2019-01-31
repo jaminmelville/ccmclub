@@ -27,6 +27,12 @@ const config = {
       template: `${__dirname}/app/index.html`,
       filename: 'index.php',
       inject: 'body',
+      minify: {
+        collapseWhitespace: true,
+        collapseInlineTagWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true
+      },
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.LoaderOptionsPlugin({
@@ -34,7 +40,22 @@ const config = {
       debug: false,
     }),
     new webpack.optimize.UglifyJsPlugin({
-      beautify: false
+      beautify: false,
+      compress: {
+        warnings: false,
+        screw_ie8: true,
+        conditionals: true,
+        unused: true,
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        if_return: true,
+        join_vars: true
+      },
+      output: {
+        comments: false
+      }
     }),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
     new ExtractTextPlugin({ filename: 'styles/style.css', disable: false, allChunks: true }),
@@ -44,8 +65,8 @@ const config = {
   module: {
     loaders: [
       {
-        test: /\.js?$/,
-        exclude: /node_modules/,
+        test: /\.jsx?$/,
+        exclude: /node_modules(?!\/foundation-sites)/,
         loader: 'babel-loader',
       },
       {

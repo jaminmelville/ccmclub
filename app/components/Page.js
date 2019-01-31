@@ -7,13 +7,18 @@ export default class Page extends Component {
   render() {
     return (
       <Content title={this.props.data.title.rendered}>
-        <img
-          className="page__image"
-          src={this.props.data.acf.feature_image.sizes.large}
-          alt=""
-        />
+        {!!this.props.data.acf.feature_image &&
+          <img
+            className="page__image"
+            src={this.props.data.acf.feature_image.sizes.large}
+            alt=""
+          />
+        }
         {/* eslint-disable react/no-danger */}
-        <p dangerouslySetInnerHTML={{ __html: this.props.data.content.rendered }} />
+        <p
+          className="page__body"
+          dangerouslySetInnerHTML={{ __html: this.props.data.content.rendered }}
+        />
       </Content>
     );
   }

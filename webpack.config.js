@@ -43,11 +43,9 @@ const config = {
         loader: "eslint-loader"
       },
       {
-        test: /\.js$/,
-        loaders: [
-          'babel-loader',
-        ],
-        exclude: /node_modules/,
+        test: /\.jsx?$/,
+        exclude: /node_modules(?!\/foundation-sites)/,
+        loader: 'babel-loader',
       },
       {
         test: /\.scss$/,

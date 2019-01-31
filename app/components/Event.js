@@ -19,11 +19,19 @@ const Event = function Event(props) {
   if (props.data.acf.map_embed) {
     buttons.push({ name: 'Map', url: `/events/${slug}/map` });
   }
-  if (props.data.acf.facebook_album_url) {
-    buttons.push({ name: 'Photos', url: `/events/${slug}/photos` });
-  }
+  // if (props.data.acf.facebook_album_url) {
+  //   buttons.push({ name: 'Photos', url: `/events/${slug}/photos` });
+  // }
   if (props.data.acf.results_url) {
     buttons.push({ name: 'Results', url: props.data.acf.results_url });
+  }
+  let imgSrc = false;
+  try {
+    imgSrc = props.data.acf.feature_image.sizes.medium;
+  } catch (e) {
+    /* eslint-disable */
+    console.error(e);
+    /* eslint-enable */
   }
   const buttonMarkup = buttons.map((button) => {
     return (
@@ -48,7 +56,7 @@ const Event = function Event(props) {
       <div className="grid-x align-middle align-center">
         <div className="cell shrink text-center">
           <div className="event__date">
-            {time.format('dddd do MMM YYYY')}
+            {time.format('dddd Do MMM YYYY')}
           </div>
           <Countdown time={time} />
           <Tags tags={props.data.acf.tags} />
@@ -56,7 +64,7 @@ const Event = function Event(props) {
         <div className="cell shrink">
           <img
             className="event__image"
-            src={props.data.acf.feature_image.sizes.medium}
+            src={imgSrc}
             alt=""
           />
         </div>

@@ -7,9 +7,11 @@ export default class Content extends Component {
     return (
       <div className="content">
         <h1 className="content__title">
-          <div className="grid-container content__grid-container">
-            {this.props.title}
-          </div>
+          {/* eslint-disable react/no-danger */}
+          <div
+            className="grid-container content__grid-container"
+            dangerouslySetInnerHTML={{ __html: this.props.title }}
+          />
         </h1>
         <div className="grid-container content__grid-container">
           {this.props.children}

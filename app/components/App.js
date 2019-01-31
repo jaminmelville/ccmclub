@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import async from 'async';
+import moment from 'moment';
 import Home from '../components/Home';
 import Menu from '../components/Menu';
 import Contact from '../components/Contact';
@@ -56,9 +57,12 @@ class App extends Component {
             });
         }
     }, (err, results) => {
+      const events = results.events.sort((a, b) => {
+        return moment(a.acf.date, 'M/D/YY h:mm a').isAfter(moment(b.acf.date, 'M/D/YY h:mm a'));
+      });
       this.setState({
         loading: false,
-        events: results.events,
+        events,
         pages: results.pages
       });
     });

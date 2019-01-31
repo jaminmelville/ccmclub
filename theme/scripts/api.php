@@ -2,7 +2,7 @@
   require_once __DIR__ . '/../vendor/autoload.php'; // change path as needed
 
   function fetchFacebookAlbum($data) {
-    $images = get_transient($data['id']);
+    $images = get_transient('photos' . $data['id']);
     if ($images) {
       return $images;
     }
@@ -29,7 +29,7 @@
         $images[] = $node->asArray();
       }
     } while ($edge = $fb->next($edge));
-    set_transient($data['id'], $images);
+    set_transient('photos' . $data['id'], $images, 60 * 60 * 24 * 7);
     return $images;
   }
 

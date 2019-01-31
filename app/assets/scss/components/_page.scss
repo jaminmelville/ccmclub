@@ -1,10 +1,31 @@
 .page {
+
+  &__body {
+
+    ul {
+      margin-left: 1.2rem;
+
+      li {
+
+        &:before {
+          content: '\2022 ';
+          margin-left: -1.2rem;
+          color: map-get($foundation-palette, primary);
+          padding-right: 0.5em;
+        }
+      }
+
+    }
+
+  }
+
   &__image {
     width: 100%;
     margin: $size 0;
-    
+
     @include breakpoint(medium) {
       margin: $size 0 3 * $size;
     }
   }
+
 }

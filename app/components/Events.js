@@ -10,6 +10,14 @@ export default class Events extends Component {
   render() {
     const items = this.props.events.map((item) => {
       const time = moment(item.acf.date, 'M/D/YY h:mm a');
+      let thumb = false;
+      try {
+        thumb = item.acf.feature_image.sizes.thumbnail;
+      } catch (e) {
+        /* eslint-disable */
+        console.error(e);
+        /* eslint-enable */
+      }
       return (
         <li
           key={item.id}
@@ -17,11 +25,15 @@ export default class Events extends Component {
         >
           <img
             className="events__image"
-            src={item.acf.feature_image.sizes.thumbnail}
+            src={thumb}
             alt=""
           />
           <div className="">
-            <h2 className="events__title">{item.title.rendered}</h2>
+            {/* eslint-disable react/no-danger */}
+            <h2
+              className="events__title"
+              dangerouslySetInnerHTML={{ __html: item.title.rendered }}
+            />
             <div className="events__date">{time.format('Do MMM YYYY')}</div>
             <Tags tags={item.acf.tags} />
             <Link
