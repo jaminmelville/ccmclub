@@ -10,7 +10,6 @@ import Contact from '../components/Contact';
 import Events from '../components/Events';
 import Page from '../components/Page';
 import Event from '../components/Event';
-import Photos from '../components/Photos';
 import Video from '../components/Video';
 import Map from '../components/Map';
 import Background from '../components/Background';
@@ -37,9 +36,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log(process.env)
     async.parallel({
         pages: (callback) => {
-          axios.get('/wp-json/wp/v2/pages')
+          axios.get(`${process.env.REACT_APP_API_ENDPOINT}/pages`)
             .then((response) => {
               callback(null, response.data);
             })
@@ -48,7 +48,7 @@ class App extends Component {
             });
         },
         events: (callback) => {
-          axios.get('/wp-json/wp/v2/events')
+          axios.get(`${process.env.REACT_APP_API_ENDPOINT}/events`)
             .then((response) => {
               callback(null, response.data);
             })
@@ -112,10 +112,6 @@ class App extends Component {
               <Route
                 path="/events/:event/map"
                 render={props => <Map data={this.getEvent(props)} />}
-              />
-              <Route
-                path="/events/:event/photos"
-                render={props => <Photos data={this.getEvent(props)} />}
               />
               <Route
                 path="/events/:event/video"

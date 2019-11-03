@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, Switch, Route } from 'react-router-dom';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 /* eslint-disable react/prefer-stateless-function */
 class Background extends Component {
@@ -35,11 +34,6 @@ class Background extends Component {
 
   render() {
     return (
-      <ReactCSSTransitionGroup
-        transitionName="background"
-        transitionEnterTimeout={500}
-        transitionLeaveTimeout={500}
-      >
         <Switch key={this.props.location.key} location={this.props.location}>
           <Route
             path="/events/:event/map"
@@ -99,7 +93,6 @@ class Background extends Component {
             }}
           />
         </Switch>
-      </ReactCSSTransitionGroup>
     );
   }
 

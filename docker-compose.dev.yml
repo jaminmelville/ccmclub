@@ -1,18 +1,12 @@
 version: '3.7'
 
 services:
-   wordpress:
-     environment:
-       WORDPRESS_DB_HOST: db:3306
-       WORDPRESS_DB_USER: wordpress
-       WORDPRESS_DB_PASSWORD: ${PASSWORD}
-       WORDPRESS_DB_NAME: wordpress
-       WORDPRESS_DEBUG: 1
-
-   cli:
-     image: wordpress:cli
-     user: "33:33"
-     depends_on:
-       - wordpress
-     volumes:
-       - ./web:/var/www/html
+  node:
+    image: "node:11"
+    working_dir: /code
+    command: bash -c "npm install && npm start"
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/code

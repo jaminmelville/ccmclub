@@ -20,7 +20,8 @@ services:
        - "${WEB_PORT}:80"
      restart: always
      volumes:
-       - ./web:/var/www/html
+       - wordpress:/var/www/html
+       - ./build:/var/www/html/wp-content/themes/ccmclub
      environment:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
@@ -34,7 +35,8 @@ services:
      depends_on:
        - wordpress
      volumes:
-       - ./web:/var/www/html
+       - wordpress:/var/www/html
 
 volumes:
     db:
+    wordpress:

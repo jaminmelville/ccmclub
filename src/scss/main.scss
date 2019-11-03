@@ -1,6 +1,5 @@
 @import 'foundation-settings';
-@import '../../../node_modules/foundation-sites/scss/foundation';
-@import '../../../node_modules/font-awesome/css/font-awesome.min.css';
+@import '~foundation-sites/scss/foundation.scss';
 @import url('https://fonts.googleapis.com/css?family=Coda');
 
 @include foundation-flex-grid;
