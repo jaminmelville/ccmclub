@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import ReactGa from 'react-ga';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import Countdown from './Countdown';
 import Content from './Content';
 import Tags from './Tags';
@@ -49,7 +51,9 @@ const Event = function Event(props) {
   })
   return (
     <>
-      <Link className="show-for-small-only" url="/">&lt; Back</Link>
+      <Link className="show-for-small-only event__back" url="/">
+        <FontAwesomeIcon icon={faAngleLeft} /> Back
+      </Link>
       <Content
         title={props.event.title.rendered}
         background={props.event.acf.background.sizes.large}

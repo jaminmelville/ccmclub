@@ -19,7 +19,7 @@ export default class Home extends Component {
           </div>
           <div className="grid-x grid-margin-x align-middle align-center grid-margin-y">
             <div className="small-12 medium-shrink cell text-center">
-              <img className="home__logo" src="logo.svg" alt="logo" />
+              <img className="home__logo" src={`${process.env.PUBLIC_URL}/logo.svg`} alt="logo" />
             </div>
             <div className="auto">
               <h1 className="home__title"

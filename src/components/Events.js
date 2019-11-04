@@ -57,7 +57,7 @@ export default class Events extends Component {
                 to={`/events/${item.slug}`}
                 className="button events__button"
               >
-                More info
+                Find out more
               </Link>
             </div>
           </div>
