@@ -22,6 +22,7 @@ services:
      volumes:
        - wordpress:/var/www/html
        - ./build:/var/www/html/wp-content/themes/ccmclub
+       - ./uploads:/var/www/html/wp-content/uploads
      environment:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress

@@ -8,22 +8,21 @@ export default class Link extends Component {
   render() {
     let component;
     if (this.props.url.startsWith('/')) {
+      let to;
       if (this.props.url.startsWith('/events/')) {
-        component = (
-          <ReactLink to={this.props.url} {...this.props}>
-            {this.props.children}
-          </ReactLink>
-        );
+        to = this.props.url;
       }
       else {
-        component = (
-          <a
-            href={`#${slug(this.props.url)}`}
-          >
-            {this.props.children}
-          </a>
-        );
+        to = `/#${slug(this.props.url)}`;
       }
+      component = (
+        <ReactLink
+          {...this.props}
+          to={to}
+        >
+          {this.props.children}
+        </ReactLink>
+      );
     } else {
       component = (
         <a

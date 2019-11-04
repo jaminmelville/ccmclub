@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import svgs from './Svgs';
 
 export default class Tags extends Component {
 
   render() {
-    const tags = this.props.tags.map(tag => (
-      <img
-        className="tags__item"
-        key={tag.term_id}
-        title={tag.name}
-        src={`https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/${tag.name}-icon.png`}
-        alt=""
-      />
-    ));
+    const tags = this.props.tags.map(tag => svgs[tag.name]({ fill: this.props.color }));
     return (
       <div className="tags">
         {tags}
@@ -22,7 +15,11 @@ export default class Tags extends Component {
 
 }
 
-/* eslint-disable react/forbid-prop-types */
 Tags.propTypes = {
   tags: PropTypes.array.isRequired,
+  color: PropTypes.string
+};
+
+Tags.defaultProps = {
+  color: '#ffffff'
 };

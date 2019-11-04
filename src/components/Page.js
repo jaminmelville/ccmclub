@@ -9,9 +9,9 @@ export default class Page extends Component {
       <Content
         id={this.props.data.slug}
         title={this.props.data.title.rendered}
-        background={this.props.data.acf.background.sizes.large}
+        background={this.props.data.acf ? this.props.data.acf.background.sizes.large : null}
       >
-        {!!this.props.data.acf.feature_image &&
+        {!!this.props.data.acf && !!this.props.data.acf.feature_image &&
           <img
             className="page__image"
             src={this.props.data.acf.feature_image.sizes.large}

@@ -34,27 +34,32 @@ export default class Events extends Component {
       return (
         <li
           key={item.id}
-          className="events__item flex-container align-middle"
+          className="events__item cell radius bordered shadow card shrink"
         >
-          <img
-            className="events__image"
-            src={thumb}
-            alt=""
-          />
-          <div className="">
-            {/* eslint-disable react/no-danger */}
-            <h2
-              className="events__title"
-              dangerouslySetInnerHTML={{ __html: item.title.rendered }}
+          <div className="text-center">
+            <img
+              className="events__image"
+              src={thumb}
+              alt=""
             />
-            <div className="events__date">{item.acf.date ? time.format('Do MMM YYYY'): 'Date to be confirmed'}</div>
-            <Tags tags={item.acf.tags} />
-            <Link
-              to={`/events/${item.slug}`}
-              className="button events__button"
-            >
-              More info
-            </Link>
+          </div>
+          <div className="card-section flex-container flex-dir-column align-justify align-top">
+            <div>
+              <div className="events__date">{item.acf.date ? time.format('Do MMM YYYY'): 'Date to be confirmed'}</div>
+              <h2
+                className="events__title"
+                dangerouslySetInnerHTML={{ __html: item.title.rendered }}
+              />
+            </div>
+            <div>
+              <Tags tags={item.acf.tags} color="#060606" />
+              <Link
+                to={`/events/${item.slug}`}
+                className="button events__button"
+              >
+                More info
+              </Link>
+            </div>
           </div>
         </li>
       )
@@ -65,7 +70,7 @@ export default class Events extends Component {
         id="events"
         background="https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/events.jpg"
       >
-        <ul className="events">
+        <ul className="events grid-x grid-margin-x grid-margin-y align-center">
           {items}
         </ul>
       </Content>

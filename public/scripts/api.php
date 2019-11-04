@@ -7,6 +7,9 @@
         'email' => get_option('ccmc_contact_email'),
         'phone' => get_option('ccmc_contact_phone'),
       ],
+      'site' => [
+        'name' => nl2br(get_option('ccmc_site_name'))
+      ]
     ];
     return $settings;
   }

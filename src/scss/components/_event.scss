@@ -1,7 +1,5 @@
 .event {
   &__image {
-    width: 250px;
-    height: 250px;
 
     @include breakpoint(medium) {
       margin-left: 2 * $size;

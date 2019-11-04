@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Link from './Link';
+import svgs from './Svgs';
 
 class Menu extends Component {
 
@@ -37,11 +38,12 @@ class Menu extends Component {
       </li>
     ))
     return (
-      <div className="ccmc-menu">
+      <div className="ccmc-menu hide-for-small-only">
         <ul
           className="menu align-center"
         >
           {menuItems}
+          <li>{svgs.cassowary({ fill: '#ffffff' })}</li>
         </ul>
       </div>
     );

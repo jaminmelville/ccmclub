@@ -22,19 +22,6 @@
   		</div>
   	<?php
   }
-  function display_fb_app_id_element()
-  {
-  	?>
-    	<input type="text" name="ccmc_fb_app_id" id="ccmc_fb_app_id" value="<?php echo get_option('ccmc_fb_app_id'); ?>" />
-    <?php
-  }
-
-  function display_fb_app_secret_element()
-  {
-  	?>
-    	<input type="text" name="ccmc_fb_app_secret" id="ccmc_fb_app_secret" value="<?php echo get_option('ccmc_fb_app_secret'); ?>" />
-    <?php
-  }
 
   function display_contact_name_element()
   {
@@ -57,13 +44,22 @@
     <?php
   }
 
+  function display_site_name_element()
+  {
+    ?>
+      <textarea
+        name="ccmc_site_name"
+        id="ccmc_site_name"
+        rows="4"
+      ><?php echo get_option('ccmc_site_name'); ?></textarea>
+    <?php
+  }
+
   function display_theme_panel_fields()
   {
-  	add_settings_section("fbapp", "Facebook app settings", null, "theme-options");
-  	add_settings_field("ccmc_fb_app_id", "Facebook app ID", "display_fb_app_id_element", "theme-options", "fbapp");
-    add_settings_field("ccmc_fb_app_secret", "Facebook app secret", "display_fb_app_secret_element", "theme-options", "fbapp");
-    register_setting("section", "ccmc_fb_app_id");
-    register_setting("section", "ccmc_fb_app_secret");
+  	add_settings_section("site", "Site settings", null, "theme-options");
+    add_settings_field("ccmc_site_name", "Name", "display_site_name_element", "theme-options", "site");
+    register_setting("section", "ccmc_site_name");
 
     add_settings_section("contact", "Contact settings", null, "theme-options");
     add_settings_field("ccmc_contact_name", "Name", "display_contact_name_element", "theme-options", "contact");

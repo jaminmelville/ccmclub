@@ -8,8 +8,6 @@ import Tags from './Tags';
 import Link from './Link';
 import Video from './Video';
 
-ReactGa.initialize('UA-110451547-1');
-
 const Event = function Event(props) {
   const time = moment(props.event.acf.date, 'M/D/YY h:mm a');
   const buttons = [];
@@ -17,11 +15,8 @@ const Event = function Event(props) {
   if (props.event.acf.youtube_url) {
     buttons.push({ name: 'Video', url: `/events/${slug}/video` });
   }
-  if (props.event.acf.map_embed) {
-    buttons.push({ name: 'Map', url: `/events/${slug}/map` });
-  }
-  // if (props.event.acf.facebook_album_url) {
-  //   buttons.push({ name: 'Photos', url: `/events/${slug}/photos` });
+  // if (props.event.acf.map_embed) {
+  //   buttons.push({ name: 'Map', url: `/events/${slug}/map` });
   // }
   if (props.event.acf.results_url) {
     buttons.push({ name: 'Results', url: props.event.acf.results_url });
@@ -54,54 +49,59 @@ const Event = function Event(props) {
   })
   return (
     <>
-    <Content
-      title={props.event.title.rendered}
-      background={props.event.acf.background.sizes.large}
-    >
-      <div className="grid-x align-middle align-center">
-        <div className="cell shrink text-center">
-          <div className="event__date">
-            {time.format('dddd Do MMM YYYY')}
+      <Link className="show-for-small-only" url="/">&lt; Back</Link>
+      <Content
+        title={props.event.title.rendered}
+        background={props.event.acf.background.sizes.large}
+      >
+        <div className="grid-x align-middle align-center">
+          <div className="cell shrink text-center">
+            {!!props.event.acf.date &&
+              <div className="event__date">
+                {time.format('dddd Do MMM YYYY')}
+              </div>
+            }
+            {!!props.event.acf.date &&
+              <Countdown time={time} />
+            }
+            <Tags tags={props.event.acf.tags} />
           </div>
-          <Countdown time={time} />
-          <Tags tags={props.event.acf.tags} />
+          <div className="cell shrink">
+            <img
+              className="event__image"
+              src={imgSrc}
+              alt=""
+            />
+          </div>
         </div>
-        <div className="cell shrink">
-          <img
-            className="event__image"
-            src={imgSrc}
-            alt=""
-          />
+        <div className="expanded button-group event__buttons stacked-for-small">
+          {!!props.event.acf.registration_url &&
+            <a
+              className="button large"
+              href={props.event.acf.registration_url}
+              target="_blank"
+              onClick={() => {
+                ReactGa.event({
+                  category: 'Event',
+                  action: 'Visited register site',
+                  label: props.event.title.rendered,
+                });
+              }}
+            >
+              Register now
+            </a>
+          }
+          {buttonMarkup}
         </div>
-      </div>
-      <div className="expanded button-group event__buttons stacked-for-small">
-        {!!props.event.acf.registration_url &&
-          <a
-            className="button large"
-            href={props.event.acf.registration_url}
-            target="_blank"
-            onClick={() => {
-              ReactGa.event({
-                category: 'Event',
-                action: 'Visited register site',
-                label: props.event.title.rendered,
-              });
-            }}
-          >
-            Register now
-          </a>
-        }
-        {buttonMarkup}
-      </div>
-      {/* eslint-disable react/no-danger */}
-      <p dangerouslySetInnerHTML={{ __html: props.event.content.rendered }} />
-    </Content>
-    {!!props.event.acf.youtube_url &&
-      <Video
-        data={props.event}
-      />
-    }
-  </>
+        {/* eslint-disable react/no-danger */}
+        <p dangerouslySetInnerHTML={{ __html: props.event.content.rendered }} />
+      </Content>
+      {!!props.event.acf.youtube_url &&
+        <Video
+          data={props.event}
+        />
+      }
+    </>
   );
 };
 

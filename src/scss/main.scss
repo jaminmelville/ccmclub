@@ -6,7 +6,7 @@
 @include foundation-flex-classes;
 @include foundation-everything($prototype: true);
 
-$ccmc-menu-height: 3.4rem;
+$ccmc-menu-height: 3rem;
 
 @import 'components/breadcrumbs';
 @import 'components/contact';
@@ -29,6 +29,7 @@ $ccmc-menu-height: 3.4rem;
 }
 html {
   scroll-behavior: smooth;
+  margin-top: 0!important;
 }
 body {
   color: white;
@@ -59,4 +60,12 @@ h1 {
 
 .button.hollow {
   color: white;
+}
+
+
+.ccmc-svg {
+  height: 2rem;
+  display: inline-block;
+  width: 2rem;
+  margin-right: 0.5rem;
 }
