@@ -8,7 +8,6 @@ const Loader = function Loader() {
         alt="loader"
         className="loader__image"
       />
-      <br />
       Loading...
     </div>
   );

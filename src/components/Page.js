@@ -6,7 +6,11 @@ export default class Page extends Component {
 
   render() {
     return (
-      <Content title={this.props.data.title.rendered}>
+      <Content
+        id={this.props.data.slug}
+        title={this.props.data.title.rendered}
+        background={this.props.data.acf.background.sizes.large}
+      >
         {!!this.props.data.acf.feature_image &&
           <img
             className="page__image"
@@ -25,7 +29,6 @@ export default class Page extends Component {
 
 }
 
-/* eslint-disable react/forbid-prop-types */
 Page.propTypes = {
   data: PropTypes.object.isRequired,
 };

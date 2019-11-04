@@ -4,10 +4,10 @@
 
 @include foundation-flex-grid;
 @include foundation-flex-classes;
-@include foundation-everything;
+@include foundation-everything($prototype: true);
 
-@import 'animation';
-@import 'components/background';
+$ccmc-menu-height: 3.4rem;
+
 @import 'components/breadcrumbs';
 @import 'components/contact';
 @import 'components/content';
@@ -19,7 +19,6 @@
 @import 'components/map';
 @import 'components/menu';
 @import 'components/page';
-@import 'components/photos';
 @import 'components/tags';
 
 ::selection {
@@ -27,6 +26,9 @@
 }
 :focus{
   outline: none !important;
+}
+html {
+  scroll-behavior: smooth;
 }
 body {
   color: white;
@@ -57,8 +59,4 @@ h1 {
 
 .button.hollow {
   color: white;
-}
-
-html, body, #root, #root > div, .off-canvas-content {
-  height: 100%;
 }

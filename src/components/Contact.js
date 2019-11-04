@@ -1,31 +1,17 @@
 import React from 'react';
 import axios from 'axios';
-import Loader from './Loader';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faMobile, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Content from './Content';
 
 export default class Contact extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: '',
-      body: '',
-      csrfToken: '',
-      details: null,
-      loading: true,
-    };
-  }
-
-
-  componentDidMount() {
-    axios.get('/wp-json/ccmc/v1/settings')
-      .then((response) => {
-        this.setState({ details: response.data.contact, loading: false });
-      })
-      .catch(() => {
-        this.setState({ loading: false });
-      });
-  }
+  state = {
+    title: '',
+    body: '',
+    csrfToken: '',
+    details: null,
+  };
 
   // @TODO: /wp-json/ccmc/v1/settings
 
@@ -59,39 +45,39 @@ export default class Contact extends React.Component {
 
   render() {
     return (
-      <Content title="Contact">
-        {this.state.loading ?
-          <Loader />
-          :
+      <Content
+        id="contact"
+        title="Contact"
+        background="https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/contact.jpg"
+      >
           <div className="grid-x align-center">
             <div className="cell small-12 medium-shrink contact__item">
-              <i className="contact__icon fa fa-4x fa-user" />
+              <FontAwesomeIcon className="contact__icon" size="4x" icon={faUser} />
               <span
                 className="contact__value"
               >
-                {this.state.details.name}
+                {this.props.contact.name}
               </span>
             </div>
             <div className="cell small-12 medium-shrink contact__item">
-              <i className="contact__icon fa fa-4x fa-mobile" />
+              <FontAwesomeIcon className="contact__icon" size="4x" icon={faMobile} />
               <a
                 className="contact__value"
-                href={`tel:${this.state.details.phone}`}
+                href={`tel:${this.props.contact.phone}`}
               >
-                {this.state.details.phone}
+                {this.props.contact.phone}
               </a>
             </div>
             <div className="cell small-12 medium-shrink contact__item">
-              <i className="contact__icon fa fa-4x fa-envelope" />
+              <FontAwesomeIcon className="contact__icon" size="4x" icon={faEnvelope} />
               <a
                 className="contact__value"
-                href={`mailto:${this.state.details.email}`}
+                href={`mailto:${this.props.contact.email}`}
               >
                 email
               </a>
             </div>
           </div>
-        }
       </Content>
     );
   }

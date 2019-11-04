@@ -1,6 +1,11 @@
 .ccmc-menu {
-  position: relative;
+  position: sticky;
   z-index: 1;
+  top:0;
+  height: $ccmc-menu-height;
+  margin-top: -$ccmc-menu-height;
+  padding: 0.5rem 0;
+  background-color: rgba(0,0,0,0.5);
 
   li a {
     transition: color 0.5s;

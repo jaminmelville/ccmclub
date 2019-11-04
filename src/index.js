@@ -1,10 +1,26 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import ReactGa from 'react-ga';
 import './scss/main.scss';
-import App from './config/Root';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactGa.initialize('UA-110451547-1');
+
+function logPageView() {
+  ReactGa.set({ page: window.location.pathname + window.location.search });
+  ReactGa.pageview(window.location.pathname + window.location.search);
+}
+
+logPageView();
+
+ReactDOM.render(
+  <Router onUpdate={logPageView}>
+    <App />
+  </Router>,
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

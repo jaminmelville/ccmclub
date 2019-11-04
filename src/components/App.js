@@ -1,83 +1,34 @@
-/* eslint-disable */
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import async from 'async';
 import moment from 'moment';
-import Home from '../components/Home';
-import Menu from '../components/Menu';
-import Contact from '../components/Contact';
-import Events from '../components/Events';
-import Page from '../components/Page';
-import Event from '../components/Event';
-import Video from '../components/Video';
-import Map from '../components/Map';
-import Background from '../components/Background';
-import Loader from '../components/Loader';
-
-const $ = require('jquery');
-import { Foundation } from 'foundation-sites/js/foundation.core';
-import { OffCanvas } from 'foundation-sites/js/foundation.offcanvas.js';
-import { Sticky } from 'foundation-sites/js/foundation.sticky.js';
-Foundation.plugin(OffCanvas, 'OffCanvas');
-Foundation.plugin(Sticky, 'Sticky');
-Foundation.addToJquery($);
+import Home from './Home';
+import Event from './Event';
+import Loader from './Loader';
 
 class App extends Component {
 
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      loading: true,
-      menu: null,
-      pages: null,
-      events: null,
-    }
+  state = {
+    loading: true,
+    pages: null,
+    events: null,
+    settings: null,
   }
 
   componentDidMount() {
-    console.log(process.env)
     async.parallel({
-        pages: (callback) => {
-          axios.get(`${process.env.REACT_APP_API_ENDPOINT}/pages`)
-            .then((response) => {
-              callback(null, response.data);
-            })
-            .catch((err) => {
-              callback(err)
-            });
-        },
-        events: (callback) => {
-          axios.get(`${process.env.REACT_APP_API_ENDPOINT}/events`)
-            .then((response) => {
-              callback(null, response.data);
-            })
-            .catch((err) => {
-              callback(err)
-            });
-        }
+        pages: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/pages`).then(data => cb(null, data)),
+        events: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/events`).then(data => cb(null, data)),
+        settings: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/ccmc/v1/settings`).then(data => cb(null, data)),
     }, (err, results) => {
-      const events = results.events.sort((a, b) => {
-        return moment(a.acf.date, 'M/D/YY h:mm a').isAfter(moment(b.acf.date, 'M/D/YY h:mm a'));
-      });
       this.setState({
         loading: false,
-        events,
-        pages: results.pages
+        events: results.events.data,
+        pages: results.pages.data,
+        settings: results.settings.data,
       });
     });
-  }
-
-  getEvent = (props) => {
-    return this.state.events.filter(event =>
-      event.slug === props.match.params.event
-    ).pop();
-  }
-
-  getPage = (props) => {
-    return this.state.pages.filter(page =>
-      page.slug === props.match.params.slug
-    ).pop();
   }
 
   render() {
@@ -86,58 +37,29 @@ class App extends Component {
     }
     return (
       <div>
-        <Background pages={this.state.pages.concat(this.state.events)} />
-        <div
-          className="off-canvas position-left reveal-for-medium"
-          data-off-canvas
-          ref={(e) => { this.offCanvas = e; }}
-        >
-          <Menu
-            events={this.state.events}
-            pages={this.state.pages}
+        <Switch>
+          <Route
+            path="/events/:event/"
+            render={routeProps => (
+              <Event
+                event={this.state.events.find(event =>
+                  event.slug === routeProps.match.params.event
+                )}
+              />
+            )}
           />
-        </div>
-        <div
-          className="off-canvas-content"
-          data-off-canvas-content
-        >
-          <button
-            type="button"
-            className="menu-icon ccmc-menu__button show-for-small-only"
-            onClick={() => {
-              $(this.offCanvas).foundation('open');
-            }}
-          />
-          <Switch>
-              <Route
-                path="/events/:event/map"
-                render={props => <Map data={this.getEvent(props)} />}
-              />
-              <Route
-                path="/events/:event/video"
-                render={props => <Video data={this.getEvent(props)} />}
-              />
-              <Route
-                path="/events/:event/"
-                render={props => <Event data={this.getEvent(props)} />}
-              />
-            <Route path="/events/:event/" component={Event} />
-            <Route
-              path="/events/"
-              render={() => <Events events={this.state.events} />}
+          <Route path="/" exact>
+            <Home
+              events={this.state.events}
+              settings={this.state.settings}
+              pages={this.state.pages}
             />
-            <Route path="/contact/" component={Contact} />
-            <Route
-              path="/:slug"
-              render={props => <Page data={this.getPage(props)} />}
-            />
-            <Route path="/" exact component={Home} />
-          </Switch>
-        </div>
+          </Route>
+        </Switch>
       </div>
     );
   }
 
 }
 
-export default withRouter(App);
+export default App;

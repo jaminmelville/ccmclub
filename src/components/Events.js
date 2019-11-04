@@ -5,10 +5,23 @@ import moment from 'moment';
 import Content from './Content';
 import Tags from './Tags';
 
+window.moment =  moment;
 export default class Events extends Component {
 
   render() {
-    const items = this.props.events.map((item) => {
+    const sorted = this.props.events.sort((a, b) => {
+      if (!a.acf.date && !b.acf.date) {
+        return 0;
+      }
+      if (!a.acf.date) {
+        return 1;
+      }
+      if (!b.acf.date) {
+        return -1;
+      }
+      return Math.sign(moment(a.acf.date, 'M/D/YY h:mm a').diff(moment(b.acf.date, 'M/D/YY h:mm a')));
+    });
+    const items = sorted.map((item) => {
       const time = moment(item.acf.date, 'M/D/YY h:mm a');
       let thumb = false;
       try {
@@ -34,7 +47,7 @@ export default class Events extends Component {
               className="events__title"
               dangerouslySetInnerHTML={{ __html: item.title.rendered }}
             />
-            <div className="events__date">{time.format('Do MMM YYYY')}</div>
+            <div className="events__date">{item.acf.date ? time.format('Do MMM YYYY'): 'Date to be confirmed'}</div>
             <Tags tags={item.acf.tags} />
             <Link
               to={`/events/${item.slug}`}
@@ -47,7 +60,11 @@ export default class Events extends Component {
       )
     });
     return (
-      <Content title="Events">
+      <Content
+        title="Events"
+        id="events"
+        background="https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/events.jpg"
+      >
         <ul className="events">
           {items}
         </ul>
@@ -57,7 +74,6 @@ export default class Events extends Component {
 
 }
 
-/* eslint-disable react/forbid-prop-types */
 Events.propTypes = {
   events: PropTypes.array.isRequired,
 }

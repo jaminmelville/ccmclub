@@ -1,10 +1,9 @@
 .home {
   display: flex;
-  height: 100%;
 
   &__social {
     position: absolute;
-    bottom: $size;
+    top: $size;
     right: $size;
   }
 
