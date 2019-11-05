@@ -2,7 +2,6 @@ node_modules/
 theme/vendor/
 theme/dist/
 theme/images/
-.env
 web/
 !web/wp-content/themes/ccmclub
 
@@ -21,6 +20,7 @@ web/
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local
