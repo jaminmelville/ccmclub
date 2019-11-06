@@ -12,7 +12,7 @@ const Video = function Video(props) {
     >
       <div className="responsive-embed widescreen">
         <iframe
-          src={`https://www.youtube.com/embed/${id}?autoplay=1&rel=0&controls=0modestbranding=1&showinfo=0`}
+          src={`https://www.youtube.com/embed/${id}?autoplay=0&rel=0&controls=0modestbranding=1&showinfo=0`}
           allowFullScreen
           title="youtube"
         />

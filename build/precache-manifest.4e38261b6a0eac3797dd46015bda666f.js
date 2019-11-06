@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "72f41efc5c43306c7a0dfeb8937d21f9",
+    "revision": "f975f6e4d94ae6e4e19a1fede3217550",
     "url": "/wp-content/themes/ccmclub/index.html"
   },
   {
-    "revision": "268984db23ef6be2b013",
+    "revision": "8edd57cf62fcda3ff820",
     "url": "/wp-content/themes/ccmclub/static/css/main.d1b22a18.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/wp-content/themes/ccmclub/static/js/2.d764c7f2.chunk.js"
   },
   {
-    "revision": "268984db23ef6be2b013",
-    "url": "/wp-content/themes/ccmclub/static/js/main.c175beb4.chunk.js"
+    "revision": "8edd57cf62fcda3ff820",
+    "url": "/wp-content/themes/ccmclub/static/js/main.4079e40f.chunk.js"
   },
   {
     "revision": "e56d958026670ad29c8c",
