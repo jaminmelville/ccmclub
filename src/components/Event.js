@@ -9,6 +9,7 @@ import Content from './Content';
 import Tags from './Tags';
 import Link from './Link';
 import Video from './Video';
+import Map from './Map';
 
 const Event = function Event(props) {
   const time = moment(props.event.acf.date, 'M/D/YY h:mm a');
@@ -17,11 +18,20 @@ const Event = function Event(props) {
   if (props.event.acf.youtube_url) {
     buttons.push({ name: 'Video', url: `/events/${slug}#video` });
   }
-  // if (props.event.acf.map_embed) {
-  //   buttons.push({ name: 'Map', url: `/events/${slug}/map` });
-  // }
+  let hasMap = !!props.event.acf.map_embed
+  if (hasMap) {
+    const match = props.event.acf.map_embed.match(/mid=([^&]*)/);
+    if (match) {
+      buttons.push({ name: 'Map', url: `/events/${slug}#map` });
+    } else {
+      hasMap = false;
+    }
+  }
   if (props.event.acf.results_url) {
     buttons.push({ name: 'Results', url: props.event.acf.results_url });
+  }
+  if (props.event.acf.results_url) {
+    buttons.push({ name: 'Photos', url: props.event.acf.facebook_album_url });
   }
   let imgSrc = false;
   try {
@@ -102,6 +112,11 @@ const Event = function Event(props) {
       </Content>
       {!!props.event.acf.youtube_url &&
         <Video
+          data={props.event}
+        />
+      }
+      {hasMap &&
+        <Map
           data={props.event}
         />
       }

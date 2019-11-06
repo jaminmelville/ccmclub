@@ -40,8 +40,11 @@ class App extends Component {
       if (this.props.location.hash === '') {
         document.documentElement.scrollTop = 0;
       } else {
-        const scrollTop = document.getElementById(this.props.location.hash.replace('#', '')).getBoundingClientRect().top;
-        document.documentElement.scrollTop = document.documentElement.scrollTop + scrollTop;
+        const element = document.getElementById(this.props.location.hash.replace('#', ''));
+        if (element) {
+          const scrollTop = element.getBoundingClientRect().top;
+          document.documentElement.scrollTop = document.documentElement.scrollTop + scrollTop;
+        }
       }
     }
   }
