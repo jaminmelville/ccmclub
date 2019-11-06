@@ -15,7 +15,7 @@ const Event = function Event(props) {
   const buttons = [];
   const slug = props.event.slug;
   if (props.event.acf.youtube_url) {
-    buttons.push({ name: 'Video', url: `/events/${slug}/video` });
+    buttons.push({ name: 'Video', url: `/events/${slug}#video` });
   }
   // if (props.event.acf.map_embed) {
   //   buttons.push({ name: 'Map', url: `/events/${slug}/map` });
