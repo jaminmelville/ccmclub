@@ -7,12 +7,23 @@
   padding: 0.5rem 0;
   background-color: rgba(0,0,0,0.5);
 
-  li a {
+  &__item {
     transition: color 0.5s;
     color: white;
     text-transform: uppercase;
 
+    &:focus {
+      color: white;
+    }
+
     &:hover {
+      color: map-get($foundation-palette, primary);
+    }
+
+    &--active {
+      &:focus {
+        color: map-get($foundation-palette, primary);
+      }
       color: map-get($foundation-palette, primary);
     }
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faMobile, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Content from './Content';

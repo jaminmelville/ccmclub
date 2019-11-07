@@ -1,35 +1,51 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Link from './Link';
+import { Link } from 'react-router-dom';
 import svgs from './Svgs';
 
 class Menu extends Component {
 
+  state = {
+    active: false,
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.setActive);
+    window.addEventListener('resize', this.setActive);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.setActive);
+    window.removeEventListener('resize', this.setActive);
+  }
+
+  setActive = () => {
+    const items = this.props.items;
+    let active = items[0];
+    items.forEach(item => {
+      const element = document.getElementById(item.url.replace('#', ''));
+      if (element) {
+        const scrollTop = element.getBoundingClientRect().top;
+        const middle = window.innerHeight / 2;
+        if (scrollTop < middle) {
+          active = item;
+        }
+      }
+    })
+    this.setState({ active });
+  }
+
   render() {
-    const items = [
-      {
-        name: 'Home',
-        url: '/' },
-      {
-        name: 'Events',
-        url: '/events',
-      },
-    ];
-    this.props.pages.forEach((item) => {
-      items.push({
-        name: item.title.rendered,
-        url: `/${item.slug}`,
-      });
-    });
-    items.push({
-      name: 'Contact',
-      url: '/contact',
-    });
-    const menuItems = items.map(item => (
-      <li key={item.url}>
+    const menuItems = this.props.items.map(item => (
+      <li
+        key={item.url}
+      >
         <Link
-          url={item.url}
+          to={item.url}
+          className={classNames('ccmc-menu__item', {
+            'ccmc-menu__item--active': item === this.state.active,
+          })}
         >
           <span
             dangerouslySetInnerHTML={{ __html: item.name }}
@@ -52,8 +68,7 @@ class Menu extends Component {
 }
 
 Menu.propTypes = {
-  events: PropTypes.array.isRequired,
-  pages: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired,
 };
 
 export default Menu;

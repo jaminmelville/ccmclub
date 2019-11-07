@@ -29,6 +29,7 @@ export default class Link extends Component {
           href={this.props.url}
           {...this.props}
           target="_blank"
+          rel="noopener noreferrer"
         >
           {this.props.children}
         </a>

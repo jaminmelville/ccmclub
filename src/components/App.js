@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import async from 'async';
-import moment from 'moment';
 import Home from './Home';
 import Event from './Event';
 import Loader from './Loader';
@@ -54,6 +53,25 @@ class App extends Component {
       return (<Loader />);
     }
     const pages = this.state.pages.map(page => <Page key={page.title.rendered} data={page} />);
+    const menuItems = [
+      {
+        name: 'Home',
+        url: '/' },
+      {
+        name: 'Events',
+        url: '#events',
+      },
+    ];
+    this.state.pages.forEach((item) => {
+      menuItems.push({
+        name: item.title.rendered,
+        url: `#${item.slug}`,
+      });
+    });
+    menuItems.push({
+      name: 'Contact',
+      url: '#contact',
+    });
     return (
       <>
         <Route path="/" exact>
@@ -64,8 +82,7 @@ class App extends Component {
           />
         </Route>
         <Menu
-          events={this.state.events}
-          pages={this.state.pages}
+          items={menuItems}
         />
         <Route
           path="/events/:event/"

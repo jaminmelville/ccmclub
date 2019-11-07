@@ -94,6 +94,7 @@ const Event = function Event(props) {
               className="button large"
               href={props.event.acf.registration_url}
               target="_blank"
+              rel="noopener noreferrer"
               onClick={() => {
                 ReactGa.event({
                   category: 'Event',

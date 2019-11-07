@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { slug } from '../utils';
 
 export default class Content extends Component {
 
   render() {
     return (
       <div
-        id={!!this.props.id ? slug(this.props.id) : null}
+        id={this.props.id}
         className="content"
       >
         <div
@@ -31,7 +30,13 @@ export default class Content extends Component {
 }
 
 Content.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   children: PropTypes.node.isRequired,
   background: PropTypes.string.isRequired,
+  id: PropTypes.string,
+};
+
+Content.defaultProps = {
+  id: '',
+  title: '',
 };
