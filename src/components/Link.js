@@ -1,24 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link as ReactLink } from 'react-router-dom';
-import { slug } from '../utils';
 
 export default class Link extends Component {
 
   render() {
     let component;
     if (this.props.url.startsWith('/')) {
-      let to;
-      if (this.props.url.startsWith('/events/')) {
-        to = this.props.url;
-      }
-      else {
-        to = `/#${slug(this.props.url)}`;
-      }
       component = (
         <ReactLink
           {...this.props}
-          to={to}
+          to={this.props.url}
         >
           {this.props.children}
         </ReactLink>
@@ -32,6 +26,8 @@ export default class Link extends Component {
           rel="noopener noreferrer"
         >
           {this.props.children}
+          {' '}
+          <FontAwesomeIcon icon={faExternalLinkAlt} />
         </a>
       );
     }

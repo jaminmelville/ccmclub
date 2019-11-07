@@ -23,11 +23,16 @@ class App extends Component {
     async.parallel({
         pages: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/pages`).then(data => cb(null, data)),
         events: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/events`).then(data => cb(null, data)),
+        sponsors: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/sponsors`).then(data => cb(null, data)),
         settings: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/ccmc/v1/settings`).then(data => cb(null, data)),
     }, (err, results) => {
+      const events = results.events.data.map(event => ({
+        ...event,
+        sponsors: results.sponsors.data.filter(sponsor => sponsor.acf.event === event.id),
+      }));
       this.setState({
         loading: false,
-        events: results.events.data,
+        events,
         pages: results.pages.data,
         settings: results.settings.data,
       });
@@ -59,18 +64,18 @@ class App extends Component {
         url: '/' },
       {
         name: 'Events',
-        url: '#events',
+        url: '/#events',
       },
     ];
     this.state.pages.forEach((item) => {
       menuItems.push({
         name: item.title.rendered,
-        url: `#${item.slug}`,
+        url: `/#${item.slug}`,
       });
     });
     menuItems.push({
       name: 'Contact',
-      url: '#contact',
+      url: '/#contact',
     });
     return (
       <>

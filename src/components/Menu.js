@@ -13,6 +13,7 @@ class Menu extends Component {
   componentDidMount() {
     window.addEventListener('scroll', this.setActive);
     window.addEventListener('resize', this.setActive);
+    this.setActive();
   }
 
   componentWillUnmount() {
@@ -24,7 +25,7 @@ class Menu extends Component {
     const items = this.props.items;
     let active = items[0];
     items.forEach(item => {
-      const element = document.getElementById(item.url.replace('#', ''));
+      const element = document.getElementById(item.url.replace('/#', ''));
       if (element) {
         const scrollTop = element.getBoundingClientRect().top;
         const middle = window.innerHeight / 2;
@@ -32,7 +33,7 @@ class Menu extends Component {
           active = item;
         }
       }
-    })
+    });
     this.setState({ active });
   }
 

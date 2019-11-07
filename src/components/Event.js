@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import ReactGa from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import Countdown from './Countdown';
 import Content from './Content';
 import Tags from './Tags';
 import Link from './Link';
 import Video from './Video';
 import Map from './Map';
+import Sponsors from './Sponsors';
 
 const Event = function Event(props) {
   const time = moment(props.event.acf.date, 'M/D/YY h:mm a');
@@ -104,6 +105,8 @@ const Event = function Event(props) {
               }}
             >
               Register now
+              {' '}
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
             </a>
           }
           {buttonMarkup}
@@ -119,6 +122,11 @@ const Event = function Event(props) {
       {hasMap &&
         <Map
           data={props.event}
+        />
+      }
+      {props.event.sponsors.length > 0 &&
+        <Sponsors
+          sponsors={props.event.sponsors}
         />
       }
     </>

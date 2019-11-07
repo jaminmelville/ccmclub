@@ -1,0 +1,24 @@
+.sponsors {
+  flex-wrap: wrap;
+
+  &__link {
+    transition: color 0.5s;
+    color: white;
+  }
+
+  &__image {
+    transition: filter 0.5s;
+    filter: grayscale(100%);
+  }
+
+  &__sponsor {
+    width: 200px;
+    margin: 2rem 0;
+
+    &:hover {
+      .sponsors__image {
+        filter: grayscale(0%);
+      }
+    }
+  }
+}

@@ -32,11 +32,12 @@ export default class Content extends Component {
 Content.propTypes = {
   title: PropTypes.string,
   children: PropTypes.node.isRequired,
-  background: PropTypes.string.isRequired,
+  background: PropTypes.string,
   id: PropTypes.string,
 };
 
 Content.defaultProps = {
   id: '',
   title: '',
+  background: false,
 };
