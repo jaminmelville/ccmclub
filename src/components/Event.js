@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 import moment from 'moment';
 import ReactGa from 'react-ga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,6 +11,7 @@ import Tags from './Tags';
 import Link from './Link';
 import Video from './Video';
 import Map from './Map';
+import OnamissionMap from './OnamissionMap';
 import Sponsors from './Sponsors';
 
 const Event = function Event(props) {
@@ -27,6 +29,10 @@ const Event = function Event(props) {
     } else {
       hasMap = false;
     }
+  }
+  if (slug === 'onamission') {
+    buttons.push({ name: 'Map', url: `/events/${slug}#map` });
+    hasMap = false;
   }
   if (props.event.acf.results_url) {
     buttons.push({ name: 'Results', url: props.event.acf.results_url });
@@ -124,6 +130,9 @@ const Event = function Event(props) {
           data={props.event}
         />
       }
+      <Route path="/events/onamission">
+        <OnamissionMap />
+      </Route>
       {props.event.sponsors.length > 0 &&
         <Sponsors
           sponsors={props.event.sponsors}
