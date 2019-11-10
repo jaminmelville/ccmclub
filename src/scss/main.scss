@@ -1,5 +1,6 @@
 @import 'foundation-settings';
 @import '~foundation-sites/scss/foundation.scss';
+@import '~leaflet/dist/leaflet.css';
 @import url('https://fonts.googleapis.com/css?family=Coda');
 
 @include foundation-flex-grid;
@@ -18,6 +19,7 @@ $ccmc-menu-height: 3rem;
 @import 'components/loader';
 @import 'components/map';
 @import 'components/menu';
+@import 'components/onamission-map';
 @import 'components/page';
 @import 'components/sponsors';
 @import 'components/tags';
