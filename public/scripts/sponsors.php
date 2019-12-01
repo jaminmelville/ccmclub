@@ -173,4 +173,38 @@
   	'description' => '',
   ));
 
-  endif;
+endif;
+
+
+add_filter( 'manage_sponsors_posts_columns', 'sponsors_columns' );
+function sponsors_columns( $columns ) {
+  $columns = [
+    'cb' => $columns['cb'],
+    'name' => __( 'Sponsor' ),
+    'title' => __( 'Title' ),
+    'value' => __( 'Value' ),
+  ];
+  return $columns;
+}
+
+add_action( 'manage_sponsors_posts_custom_column', 'sponsors_column', 10, 2);
+function sponsors_column( $column, $post_id ) {
+  if ( 'name' === $column ) {
+    echo get_post_meta( $post_id, 'name', true );
+  }
+  if ( 'event' === $column ) {
+    echo get_post_meta( $post_id, 'event', true );
+  }
+  if ( 'value' === $column ) {
+    echo get_post_meta( $post_id, 'value', true );
+  }
+
+}
+
+add_filter( 'manage_edit-sponsors_sortable_columns', 'sponsors_sortable_columns');
+function sponsors_sortable_columns( $columns ) {
+  $columns['value'] = 'value';
+  $columns['name'] = 'name';
+  $columns['event'] = 'event';
+  return $columns;
+}
