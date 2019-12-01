@@ -181,7 +181,7 @@ function sponsors_columns( $columns ) {
   $columns = [
     'cb' => $columns['cb'],
     'name' => __( 'Sponsor' ),
-    'title' => __( 'Title' ),
+    'event' => __( 'Event' ),
     'value' => __( 'Value' ),
   ];
   return $columns;
@@ -193,7 +193,7 @@ function sponsors_column( $column, $post_id ) {
     echo get_post_meta( $post_id, 'name', true );
   }
   if ( 'event' === $column ) {
-    echo get_post_meta( $post_id, 'event', true );
+    echo get_the_title(get_post_meta( $post_id, 'event', true ));
   }
   if ( 'value' === $column ) {
     echo get_post_meta( $post_id, 'value', true );
