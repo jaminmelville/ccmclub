@@ -1,0 +1,2 @@
+const json_Points_3 = {"type":"FeatureCollection","name":"Points_3","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":null,"Name":"Entrance"},"geometry":{"type":"Point","coordinates":[146.088129035195493,-17.927277605340603]}},{"type":"Feature","properties":{"id":null,"Name":"Car park"},"geometry":{"type":"Point","coordinates":[146.088043536569103,-17.927900523904412]}}]}
+export default json_Points_3

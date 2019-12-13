@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Content from './Content';
+import MtbPark from './MtbPark';
 
 export default class Page extends Component {
 
@@ -17,6 +18,9 @@ export default class Page extends Component {
             src={this.props.data.acf.feature_image.sizes.large}
             alt=""
           />
+        }
+        {this.props.data.title.rendered === 'Mountain Bike Park' &&
+          <MtbPark />
         }
         {/* eslint-disable react/no-danger */}
         <p
