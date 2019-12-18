@@ -9,6 +9,7 @@ import Events from './Events';
 import Contact from './Contact';
 import Menu from './Menu';
 import Page from './Page';
+import Sponsors from './Sponsors';
 
 class App extends Component {
 
@@ -35,6 +36,7 @@ class App extends Component {
         events,
         pages: results.pages.data,
         settings: results.settings.data,
+        sponsors: results.sponsors.data,
       });
     });
   }
@@ -77,14 +79,11 @@ class App extends Component {
       name: 'Contact',
       url: '/#contact',
     });
+    const featuredSponsors = this.state.sponsors.filter(sponsor => sponsor.acf.show_on_home_page);
     return (
       <>
         <Route path="/" exact>
-          <Home
-            events={this.state.events}
-            settings={this.state.settings}
-            pages={this.state.pages}
-          />
+          <Home settings={this.state.settings} />
         </Route>
         <Menu
           items={menuItems}
@@ -102,6 +101,9 @@ class App extends Component {
         <Route path="/" exact>
           <>
             <Events events={this.state.events} />
+            <Sponsors
+              sponsors={featuredSponsors}
+            />
             {pages}
             <Contact
               contact={this.state.settings.contact}
