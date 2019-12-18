@@ -138,6 +138,25 @@
   			'max' => '',
   			'step' => '',
   		),
+      array(
+  			'key' => 'field_5df9a5cb55792',
+  			'label' => 'Show on home page',
+  			'name' => 'show_on_home_page',
+  			'type' => 'true_false',
+  			'instructions' => 'Choose whether or not to feature this sponsor on the home page.',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array(
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'message' => '',
+  			'default_value' => 0,
+  			'ui' => 0,
+  			'ui_on_text' => '',
+  			'ui_off_text' => '',
+  		),
   	),
   	'location' => array(
   		array(
@@ -208,3 +227,9 @@ function sponsors_sortable_columns( $columns ) {
   $columns['event'] = 'event';
   return $columns;
 }
+
+function sponsors_remove_post_type_title() {
+  remove_post_type_support('sponsors', 'title');
+  remove_post_type_support('sponsors', 'editor');
+}
+add_action( 'admin_init', 'sponsors_remove_post_type_title' );
