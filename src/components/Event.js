@@ -119,7 +119,12 @@ const Event = function Event(props) {
         </div>
         {/* eslint-disable react/no-danger */}
         <p dangerouslySetInnerHTML={{ __html: props.event.content.rendered }} />
-      </Content>
+      </Content>      
+      {props.event.sponsors.length > 0 &&
+        <Sponsors
+          sponsors={props.event.sponsors}
+        />
+      }
       {!!props.event.acf.youtube_url &&
         <Video
           data={props.event}
@@ -133,11 +138,6 @@ const Event = function Event(props) {
       <Route path="/events/onamission">
         <OnamissionMap />
       </Route>
-      {props.event.sponsors.length > 0 &&
-        <Sponsors
-          sponsors={props.event.sponsors}
-        />
-      }
     </>
   );
 };

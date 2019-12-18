@@ -158,7 +158,7 @@ class OnamissionMap extends Component {
     ))
     return (
       <Content
-        title="map (2019 course)"
+        title="Map Course (2019)"
         id="map"
         background="https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/map.jpg"
       >

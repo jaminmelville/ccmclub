@@ -7,7 +7,7 @@ const Video = function Video(props) {
   return (
     <Content
       id="video"
-      title="video"
+      title="Video"
       background="https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/video.jpg"
     >
       <div className="responsive-embed widescreen">

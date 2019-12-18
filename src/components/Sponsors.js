@@ -13,19 +13,21 @@ export default class Sponsors extends Component {
           target="_blank"
           className="sponsors__link"
         >
-          <img
-            src={sponsor.acf.image.sizes.thumbnail}
-            alt={sponsor.acf.name}
+          <div
+            style={{
+              backgroundImage: `url(${sponsor.acf.image.sizes.medium})`
+            }}
             className="sponsors__image"
           />
           <br />
-          {sponsor.acf.name}
+          <h3 className="text-uppercase">{sponsor.acf.name}</h3>
         </a>
       </div>
     ));
     return (
       <Content
         title="Sponsors"
+        background="https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/mud.jpg"
       >
         <div className="sponsors flex-container align-spaced">
           {sponsors}
