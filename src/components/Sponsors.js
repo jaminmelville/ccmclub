@@ -29,7 +29,7 @@ export default class Sponsors extends Component {
         title="Sponsors"
         background="https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/mud.jpg"
       >
-        <div className="sponsors flex-container align-spaced">
+        <div className="sponsors flex-container align-center">
           {sponsors}
         </div>
       </Content>
