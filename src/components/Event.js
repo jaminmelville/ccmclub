@@ -13,134 +13,180 @@ import Video from './Video';
 import Map from './Map';
 import OnamissionMap from './OnamissionMap';
 import Sponsors from './Sponsors';
+import $ from 'jquery';
+import { Foundation } from 'foundation-sites/js/foundation.core';
+import { DropdownMenu } from 'foundation-sites/js/foundation.dropdownMenu.js';
+Foundation.plugin(DropdownMenu, 'DropdownMenu');
+Foundation.addToJquery($);
 
-const Event = function Event(props) {
-  const time = moment(props.event.acf.date, 'M/D/YY h:mm a');
-  const buttons = [];
-  const slug = props.event.slug;
-  if (props.event.acf.youtube_url) {
-    buttons.push({ name: 'Video', url: `/events/${slug}#video` });
+class Event  extends React.Component {
+
+  componentDidMount() {
+    $(document).foundation();
   }
-  let hasMap = !!props.event.acf.map_embed
-  if (hasMap) {
-    const match = props.event.acf.map_embed.match(/mid=([^&]*)/);
-    if (match) {
+
+  render() {
+    const time = moment(this.props.event.acf.date, 'M/D/YY h:mm a');
+    const buttons = [];
+    const slug = this.props.event.slug;
+    if (this.props.event.acf.youtube_url) {
+      buttons.push({ name: 'Video', url: `/events/${slug}#video` });
+    }
+    let hasMap = !!this.props.event.acf.map_embed
+    if (hasMap) {
+      const match = this.props.event.acf.map_embed.match(/mid=([^&]*)/);
+      if (match) {
+        buttons.push({ name: 'Map', url: `/events/${slug}#map` });
+      } else {
+        hasMap = false;
+      }
+    }
+    if (slug === 'onamission') {
       buttons.push({ name: 'Map', url: `/events/${slug}#map` });
-    } else {
       hasMap = false;
     }
-  }
-  if (slug === 'onamission') {
-    buttons.push({ name: 'Map', url: `/events/${slug}#map` });
-    hasMap = false;
-  }
-  if (props.event.acf.results_url) {
-    buttons.push({ name: 'Results', url: props.event.acf.results_url });
-  }
-  if (props.event.acf.results_url) {
-    buttons.push({ name: 'Photos', url: props.event.acf.facebook_album_url });
-  }
-  let imgSrc = false;
-  try {
-    imgSrc = props.event.acf.feature_image.sizes.medium;
-  } catch (e) {
-    /* eslint-disable */
-    console.error(e);
-    /* eslint-enable */
-  }
-  const buttonMarkup = buttons.map((button) => {
-    return (
-      <Link
-        key={button.name}
-        className="button hollow large"
-        url={button.url}
-        onClick={() => {
-          ReactGa.event({
-            category: 'Event',
-            action: `${button.name} pressed`,
-            label: props.event.title.rendered,
-          });
-        }}
-      >
-        {button.name}
-      </Link>
-    );
-  })
-  return (
-    <>
-      <Link className="show-for-small-only event__back" url="/">
-        <FontAwesomeIcon icon={faAngleLeft} /> Back
-      </Link>
-      <Content
-        title={props.event.title.rendered}
-        background={props.event.acf.background.sizes.large}
-      >
-        <div className="grid-x align-middle align-center">
-          <div className="cell shrink text-center">
-            {!!props.event.acf.date &&
-              <div className="event__date">
-                {time.format('dddd Do MMM YYYY')}
-              </div>
-            }
-            {!!props.event.acf.date &&
-              <Countdown time={time} />
-            }
-            <Tags tags={props.event.acf.tags} />
-          </div>
-          <div className="cell shrink">
-            <img
-              className="event__image"
-              src={imgSrc}
-              alt=""
-            />
-          </div>
-        </div>
-        <div className="expanded button-group event__buttons stacked-for-small">
-          {!!props.event.acf.registration_url &&
-            <a
-              className="button large"
-              href={props.event.acf.registration_url}
-              target="_blank"
-              rel="noopener noreferrer"
+    if (this.props.event.results.length) {
+      buttons.push({ name: 'Results', children: this.props.event.results });
+    }
+    if (this.props.event.photos.length) {
+      buttons.push({ name: 'Photos', children: this.props.event.photos });
+    }
+    let imgSrc = false;
+    try {
+      imgSrc = this.props.event.acf.feature_image.sizes.medium;
+    } catch (e) {
+      /* eslint-disable */
+      console.error(e);
+      /* eslint-enable */
+    }
+    const buttonMarkup = buttons.map((button) => {
+      if (button.children) {
+        const children = button.children.map(child => (
+          <li key={child.id} className="width-100">
+            <Link
+              className="button dark large"
+              url={child.url}
               onClick={() => {
                 ReactGa.event({
                   category: 'Event',
-                  action: 'Visited register site',
-                  label: props.event.title.rendered,
+                  action: `${button.name} pressed`,
+                  label: this.props.event.title.rendered,
                 });
               }}
             >
-              Register now
-              {' '}
-              <FontAwesomeIcon icon={faExternalLinkAlt} />
-            </a>
-          }
-          {buttonMarkup}
-        </div>
-        {/* eslint-disable react/no-danger */}
-        <p dangerouslySetInnerHTML={{ __html: props.event.content.rendered }} />
-      </Content>      
-      {props.event.sponsors.length > 0 &&
-        <Sponsors
-          sponsors={props.event.sponsors}
-        />
+              {child.label}
+            </Link>
+          </li>
+        ));
+        return (
+          <li
+            key={button.name}
+          >
+            <a className="button hollow large">{button.name}</a>
+            <ul className="menu width-100">
+              {children}
+            </ul>
+          </li>
+        );
       }
-      {!!props.event.acf.youtube_url &&
-        <Video
-          data={props.event}
-        />
-      }
-      {hasMap &&
-        <Map
-          data={props.event}
-        />
-      }
-      <Route path="/events/onamission">
-        <OnamissionMap />
-      </Route>
-    </>
-  );
-};
+      return (
+        <li
+          key={button.name}
+        >
+          <Link
+            className="button hollow large"
+            url={button.url}
+            onClick={() => {
+              ReactGa.event({
+                category: 'Event',
+                action: `${button.name} pressed`,
+                label: this.props.event.title.rendered,
+              });
+            }}
+          >
+            {button.name}
+          </Link>
+        </li>
+      );
+    })
+    return (
+      <>
+        <Link className="show-for-small-only event__back" url="/">
+          <FontAwesomeIcon icon={faAngleLeft} /> Back
+        </Link>
+        <Content
+          title={this.props.event.title.rendered}
+          background={this.props.event.acf.background.sizes.large}
+        >
+          <div className="grid-x align-middle align-center">
+            <div className="cell shrink text-center">
+              {!!this.props.event.acf.date &&
+                <div className="event__date">
+                  {time.format('dddd Do MMM YYYY')}
+                </div>
+              }
+              {!!this.props.event.acf.date &&
+                <Countdown time={time} />
+              }
+              <Tags tags={this.props.event.acf.tags} />
+            </div>
+            <div className="cell shrink">
+              <img
+                className="event__image"
+                src={imgSrc}
+                alt=""
+              />
+            </div>
+          </div>
+          <ul className="dropdown menu vertical medium-horizontal expanded event__buttons" data-dropdown-menu>
+            {!!this.props.event.acf.registration_url &&
+              <li>
+                <a
+                  className="button large"
+                  href={this.props.event.acf.registration_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    ReactGa.event({
+                      category: 'Event',
+                      action: 'Visited register site',
+                      label: this.props.event.title.rendered,
+                    });
+                  }}
+                >
+                  Register now
+                  {' '}
+                  <FontAwesomeIcon icon={faExternalLinkAlt} />
+                </a>
+              </li>
+            }
+            {buttonMarkup}
+          </ul>
+          {/* eslint-disable react/no-danger */}
+          <p dangerouslySetInnerHTML={{ __html: this.props.event.content.rendered }} />
+        </Content>
+        {this.props.event.sponsors.length > 0 &&
+          <Sponsors
+            sponsors={this.props.event.sponsors}
+          />
+        }
+        {!!this.props.event.acf.youtube_url &&
+          <Video
+            data={this.props.event}
+          />
+        }
+        {hasMap &&
+          <Map
+            data={this.props.event}
+          />
+        }
+        <Route path="/events/onamission">
+          <OnamissionMap />
+        </Route>
+      </>
+    );
+  }
+}
 
 Event.propTypes = {
   event: PropTypes.object.isRequired,

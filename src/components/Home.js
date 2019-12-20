@@ -35,6 +35,5 @@ export default class Home extends Component {
 }
 
 Home.propTypes = {
-  events: PropTypes.array.isRequired,
   settings: PropTypes.object.isRequired,
 }

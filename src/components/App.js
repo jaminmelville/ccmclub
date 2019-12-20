@@ -25,11 +25,29 @@ class App extends Component {
         pages: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/pages`).then(data => cb(null, data)),
         events: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/events`).then(data => cb(null, data)),
         sponsors: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/sponsors`).then(data => cb(null, data)),
+        results: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/results`).then(data => cb(null, data)),
+        photos: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/photos`).then(data => cb(null, data)),
         settings: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/ccmc/v1/settings`).then(data => cb(null, data)),
     }, (err, results) => {
       const events = results.events.data.map(event => ({
         ...event,
         sponsors: results.sponsors.data.filter(sponsor => sponsor.acf.event === event.id),
+        results: results.results.data
+          .filter(result => result.acf.event === event.id)
+          .map(result => ({
+            id: result.acf.id,
+            label: result.acf.label,
+            url: result.acf.url,
+          }))
+          .sort((a, b) => b.label.localeCompare(a.label)),
+          photos: results.photos.data
+            .filter(photo => photo.acf.event === event.id)
+            .map(photo => ({
+              id: photo.acf.id,
+              label: photo.acf.label,
+              url: photo.acf.url,
+            }))
+            .sort((a, b) => b.label.localeCompare(a.label)),
       }));
       this.setState({
         loading: false,
