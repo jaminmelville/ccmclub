@@ -48,8 +48,8 @@ class Event  extends React.Component {
     if (this.props.event.results.length) {
       buttons.push({ name: 'Results', children: this.props.event.results });
     }
-    if (this.props.event.acf.results_url) {
-      buttons.push({ name: 'Photos', url: this.props.event.acf.facebook_album_url });
+    if (this.props.event.photos.length) {
+      buttons.push({ name: 'Photos', children: this.props.event.photos });
     }
     let imgSrc = false;
     try {
@@ -82,7 +82,7 @@ class Event  extends React.Component {
           <li
             key={button.name}
           >
-            <a className="button hollow large">Results</a>
+            <a className="button hollow large">{button.name}</a>
             <ul className="menu width-100">
               {children}
             </ul>

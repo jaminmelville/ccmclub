@@ -26,6 +26,7 @@ class App extends Component {
         events: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/events`).then(data => cb(null, data)),
         sponsors: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/sponsors`).then(data => cb(null, data)),
         results: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/results`).then(data => cb(null, data)),
+        photos: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/photos`).then(data => cb(null, data)),
         settings: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/ccmc/v1/settings`).then(data => cb(null, data)),
     }, (err, results) => {
       const events = results.events.data.map(event => ({
@@ -39,6 +40,14 @@ class App extends Component {
             url: result.acf.url,
           }))
           .sort((a, b) => b.label.localeCompare(a.label)),
+          photos: results.photos.data
+            .filter(photo => photo.acf.event === event.id)
+            .map(photo => ({
+              id: photo.acf.id,
+              label: photo.acf.label,
+              url: photo.acf.url,
+            }))
+            .sort((a, b) => b.label.localeCompare(a.label)),
       }));
       this.setState({
         loading: false,
