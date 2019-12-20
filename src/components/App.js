@@ -22,11 +22,11 @@ class App extends Component {
 
   componentDidMount() {
     async.parallel({
-        pages: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/pages`).then(data => cb(null, data)),
-        events: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/events`).then(data => cb(null, data)),
-        sponsors: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/sponsors`).then(data => cb(null, data)),
-        results: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/results`).then(data => cb(null, data)),
-        photos: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/photos`).then(data => cb(null, data)),
+        pages: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/pages?per_page=100`).then(data => cb(null, data)),
+        events: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/events?per_page=100`).then(data => cb(null, data)),
+        sponsors: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/sponsors?per_page=100`).then(data => cb(null, data)),
+        results: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/results?per_page=100`).then(data => cb(null, data)),
+        photos: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/wp/v2/photos?per_page=100`).then(data => cb(null, data)),
         settings: cb => axios.get(`${process.env.REACT_APP_API_ENDPOINT}/ccmc/v1/settings`).then(data => cb(null, data)),
     }, (err, results) => {
       const events = results.events.data.map(event => ({
