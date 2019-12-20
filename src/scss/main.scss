@@ -65,6 +65,10 @@ h1 {
   color: white;
 }
 
+.button.dark:hover, .button.dark:focus {
+  background: map-get($foundation-palette, primary);
+}
+
 .ccmc-svg {
   height: 2rem;
   display: inline-block;

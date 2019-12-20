@@ -10,3 +10,7 @@ services:
       - "3000:3000"
     volumes:
       - .:/code
+
+  wordpress:
+    volumes:
+      - ./public/scripts:/var/www/html/wp-content/themes/ccmclub/scripts

@@ -6,10 +6,11 @@ $foundation-palette: (
   success: #1779ba,
   warning: #ffae00,
   alert: #cc4b37,
+  dark: #000,
 );
 
 $menu-item-color-active: map-get($foundation-palette, primary);
-$offcanvas-background: #ffffff25;
+$offcanvas-background: #ffffff;
 $offcanvas-inner-shadow-color: white;
 $offcanvas-inner-shadow-size: 3px;
 $grid-container-padding: (
