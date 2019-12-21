@@ -7,22 +7,20 @@ export default class Sponsors extends Component {
   render() {
     const sortedSponsors = this.props.sponsors.sort((a, b) => Math.sign(a - b));
     const sponsors = sortedSponsors.map(sponsor => (
-      <div key={sponsor.id} className="sponsors__sponsor text-center">
-        <a
-          href={sponsor.acf.link}
-          target="_blank"
-          className="sponsors__link"
-        >
-          <div
-            style={{
-              backgroundImage: `url(${sponsor.acf.image.sizes.medium})`
-            }}
-            className="sponsors__image"
-          />
-          <br />
-          <h3 className="text-uppercase">{sponsor.acf.name}</h3>
-        </a>
-      </div>
+      <a
+        key={sponsor.id}
+        href={sponsor.acf.link}
+        target="_blank"
+        className="sponsors__sponsor text-center"
+        title={sponsor.acf.name}
+      >
+        <div
+          style={{
+            backgroundImage: `url(${sponsor.acf.image.sizes.medium})`
+          }}
+          className="sponsors__image"
+        />
+      </a>
     ));
     return (
       <Content

@@ -1,17 +1,13 @@
 .sponsors {
   flex-wrap: wrap;
 
-  &__link {
-    transition: color 0.5s;
-    color: white;
-  }
-
   &__image {
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
-    width: 300px;
-    height: 300px;
+    width: 270px;
+    height: 270px;
+    margin: 15px;
     transition: filter 0.5s;
     filter: grayscale(100%);
   }
