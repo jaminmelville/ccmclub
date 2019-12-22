@@ -30,6 +30,7 @@
 ### Import database dump.
 `docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec -T db mysql -h db  -u wordpress -p[PASSWORD_HERE] wordpress < ~/Dropbox/backups/server/ccmclub.sql`
 `docker-compose -f docker-compose.yml -f docker-compose.dev.yml run cli option update siteurl 'http://localhost'`
+`docker-compose -f docker-compose.yml -f docker-compose.dev.yml run cli option update home 'http://localhost'`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

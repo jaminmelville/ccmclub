@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/wp-content/themes/ccmclub/static/css/main.3a31fac2.chunk.css",
-    "main.js": "/wp-content/themes/ccmclub/static/js/main.bf521e44.chunk.js",
-    "main.js.map": "/wp-content/themes/ccmclub/static/js/main.bf521e44.chunk.js.map",
+    "main.css": "/wp-content/themes/ccmclub/static/css/main.6be6b58f.chunk.css",
+    "main.js": "/wp-content/themes/ccmclub/static/js/main.afe8f1b4.chunk.js",
+    "main.js.map": "/wp-content/themes/ccmclub/static/js/main.afe8f1b4.chunk.js.map",
     "runtime-main.js": "/wp-content/themes/ccmclub/static/js/runtime-main.7e250a6c.js",
     "runtime-main.js.map": "/wp-content/themes/ccmclub/static/js/runtime-main.7e250a6c.js.map",
-    "static/css/2.098bc035.chunk.css": "/wp-content/themes/ccmclub/static/css/2.098bc035.chunk.css",
-    "static/js/2.a32cfb84.chunk.js": "/wp-content/themes/ccmclub/static/js/2.a32cfb84.chunk.js",
-    "static/js/2.a32cfb84.chunk.js.map": "/wp-content/themes/ccmclub/static/js/2.a32cfb84.chunk.js.map",
+    "static/css/2.4f84cb67.chunk.css": "/wp-content/themes/ccmclub/static/css/2.4f84cb67.chunk.css",
+    "static/js/2.2c8c184a.chunk.js": "/wp-content/themes/ccmclub/static/js/2.2c8c184a.chunk.js",
+    "static/js/2.2c8c184a.chunk.js.map": "/wp-content/themes/ccmclub/static/js/2.2c8c184a.chunk.js.map",
     "index.html": "/wp-content/themes/ccmclub/index.html",
-    "precache-manifest.556cfd2c2b196a394ef353417d0ea5f4.js": "/wp-content/themes/ccmclub/precache-manifest.556cfd2c2b196a394ef353417d0ea5f4.js",
+    "precache-manifest.dce9fcaa6bc723662565a8ffec324556.js": "/wp-content/themes/ccmclub/precache-manifest.dce9fcaa6bc723662565a8ffec324556.js",
     "service-worker.js": "/wp-content/themes/ccmclub/service-worker.js",
-    "static/css/2.098bc035.chunk.css.map": "/wp-content/themes/ccmclub/static/css/2.098bc035.chunk.css.map",
-    "static/css/main.3a31fac2.chunk.css.map": "/wp-content/themes/ccmclub/static/css/main.3a31fac2.chunk.css.map"
+    "static/css/2.4f84cb67.chunk.css.map": "/wp-content/themes/ccmclub/static/css/2.4f84cb67.chunk.css.map",
+    "static/css/main.6be6b58f.chunk.css.map": "/wp-content/themes/ccmclub/static/css/main.6be6b58f.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.7e250a6c.js",
-    "static/css/2.098bc035.chunk.css",
-    "static/js/2.a32cfb84.chunk.js",
-    "static/css/main.3a31fac2.chunk.css",
-    "static/js/main.bf521e44.chunk.js"
+    "static/css/2.4f84cb67.chunk.css",
+    "static/js/2.2c8c184a.chunk.js",
+    "static/css/main.6be6b58f.chunk.css",
+    "static/js/main.afe8f1b4.chunk.js"
   ]
 }

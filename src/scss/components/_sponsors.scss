@@ -1,25 +1,31 @@
 .sponsors {
-  flex-wrap: wrap;
+    &__sponsor {
+      padding: 3em;
+      position: relative;
+    }
 
-  &__image {
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 270px;
-    height: 270px;
-    margin: 15px;
-    transition: filter 0.5s;
-    filter: grayscale(100%);
-  }
+    &__image {
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+      margin: 0 auto;
+      padding-top: 40%;
+      width: 80%;
+    }
 
-  &__sponsor {
-    flex-grow: 0;
-    width: 300px;
+    &__arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      margin-top: -.5em;
+      z-index: 1;
 
-    &:hover {
-      .sponsors__image {
-        filter: grayscale(0%);
+      &--previous {
+        left: 0;
+      }
+
+      &--next {
+        right: 0;
       }
     }
-  }
 }

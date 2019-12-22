@@ -100,7 +100,7 @@ class OnamissionMap extends Component {
   }
 
   updatePolylines = () => {
-    let position = this.state.position += 0.002;
+    let position = this.state.position += 0.004;
     if (position > 1) {
       position = 0;
     }
@@ -127,7 +127,7 @@ class OnamissionMap extends Component {
 
   play = () => {
     this.setState({ playing: true });
-    this.interval = setInterval(this.updatePolylines, 50);
+    this.interval = setInterval(this.updatePolylines, 100);
   }
 
   pause = () => {

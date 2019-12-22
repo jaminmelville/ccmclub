@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/wp-content/themes/ccmclub/precache-manifest.556cfd2c2b196a394ef353417d0ea5f4.js"
+  "/wp-content/themes/ccmclub/precache-manifest.dce9fcaa6bc723662565a8ffec324556.js"
 );
 
 self.addEventListener('message', (event) => {
