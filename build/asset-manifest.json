@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/wp-content/themes/ccmclub/static/css/main.6be6b58f.chunk.css",
-    "main.js": "/wp-content/themes/ccmclub/static/js/main.afe8f1b4.chunk.js",
-    "main.js.map": "/wp-content/themes/ccmclub/static/js/main.afe8f1b4.chunk.js.map",
+    "main.js": "/wp-content/themes/ccmclub/static/js/main.281a2e1a.chunk.js",
+    "main.js.map": "/wp-content/themes/ccmclub/static/js/main.281a2e1a.chunk.js.map",
     "runtime-main.js": "/wp-content/themes/ccmclub/static/js/runtime-main.7e250a6c.js",
     "runtime-main.js.map": "/wp-content/themes/ccmclub/static/js/runtime-main.7e250a6c.js.map",
-    "static/css/2.4f84cb67.chunk.css": "/wp-content/themes/ccmclub/static/css/2.4f84cb67.chunk.css",
-    "static/js/2.2c8c184a.chunk.js": "/wp-content/themes/ccmclub/static/js/2.2c8c184a.chunk.js",
-    "static/js/2.2c8c184a.chunk.js.map": "/wp-content/themes/ccmclub/static/js/2.2c8c184a.chunk.js.map",
+    "static/css/2.93fc8c64.chunk.css": "/wp-content/themes/ccmclub/static/css/2.93fc8c64.chunk.css",
+    "static/js/2.f9ed46f7.chunk.js": "/wp-content/themes/ccmclub/static/js/2.f9ed46f7.chunk.js",
+    "static/js/2.f9ed46f7.chunk.js.map": "/wp-content/themes/ccmclub/static/js/2.f9ed46f7.chunk.js.map",
     "index.html": "/wp-content/themes/ccmclub/index.html",
-    "precache-manifest.dce9fcaa6bc723662565a8ffec324556.js": "/wp-content/themes/ccmclub/precache-manifest.dce9fcaa6bc723662565a8ffec324556.js",
+    "precache-manifest.0790e15c69329e432a9eafc765e3b73e.js": "/wp-content/themes/ccmclub/precache-manifest.0790e15c69329e432a9eafc765e3b73e.js",
     "service-worker.js": "/wp-content/themes/ccmclub/service-worker.js",
-    "static/css/2.4f84cb67.chunk.css.map": "/wp-content/themes/ccmclub/static/css/2.4f84cb67.chunk.css.map",
+    "static/css/2.93fc8c64.chunk.css.map": "/wp-content/themes/ccmclub/static/css/2.93fc8c64.chunk.css.map",
     "static/css/main.6be6b58f.chunk.css.map": "/wp-content/themes/ccmclub/static/css/main.6be6b58f.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.7e250a6c.js",
-    "static/css/2.4f84cb67.chunk.css",
-    "static/js/2.2c8c184a.chunk.js",
+    "static/css/2.93fc8c64.chunk.css",
+    "static/js/2.f9ed46f7.chunk.js",
     "static/css/main.6be6b58f.chunk.css",
-    "static/js/main.afe8f1b4.chunk.js"
+    "static/js/main.281a2e1a.chunk.js"
   ]
 }

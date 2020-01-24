@@ -17,7 +17,7 @@ export default class Sponsors extends Component {
     let speed;
     const slides = sortedSponsors.map((sponsor, index) => {
       if (index === this.state.index) {
-        speed = (parseInt(sponsor.acf.value) + 1) / max * 5000;
+        speed = (parseInt(sponsor.acf.value) + 1) / max * 3000;
       }
       return (
         <a
