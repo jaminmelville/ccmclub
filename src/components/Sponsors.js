@@ -24,6 +24,7 @@ export default class Sponsors extends Component {
           key={sponsor.id}
           href={sponsor.acf.link}
           target="_blank"
+          rel="noopener noreferrer"
           className="sponsors__sponsor text-center"
           title={sponsor.acf.name}
         >

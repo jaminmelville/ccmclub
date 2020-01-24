@@ -36,31 +36,27 @@ export default class Events extends Component {
           key={item.id}
           className="events__item cell radius bordered shadow card shrink"
         >
-          <div className="text-center">
-            <img
-              className="events__image"
-              src={thumb}
-              alt=""
-            />
-          </div>
-          <div className="card-section flex-container flex-dir-column align-justify align-top">
-            <div>
-              <div className="events__date">{item.acf.date ? time.format('Do MMM YYYY'): 'Date to be confirmed'}</div>
-              <h2
-                className="events__title"
-                dangerouslySetInnerHTML={{ __html: item.title.rendered }}
+          <Link to={`/events/${item.slug}`} className="events__content flex-container flex-dir-column align-justify">
+            <div className="text-center">
+              <img
+                className="events__image"
+                src={thumb}
+                alt=""
               />
             </div>
-            <div>
-              <Tags tags={item.acf.tags} color="#060606" />
-              <Link
-                to={`/events/${item.slug}`}
-                className="button events__button"
-              >
-                Find out more
-              </Link>
+            <div className="card-section flex-container flex-dir-column align-justify align-top">
+              <div>
+                <div className="events__date">{item.acf.date ? time.format('Do MMM YYYY'): 'Date to be confirmed'}</div>
+                <h2
+                  className="events__title"
+                  dangerouslySetInnerHTML={{ __html: item.title.rendered }}
+                />
+              </div>
+              <div className="text-center events__tags">
+                <Tags tags={item.acf.tags} color="#060606" />
+              </div>
             </div>
-          </div>
+          </Link>
         </li>
       )
     });
