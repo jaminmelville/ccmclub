@@ -5,7 +5,7 @@ import svgs from './Svgs';
 export default class Tags extends Component {
 
   render() {
-    const tags = this.props.tags.map(tag => svgs[tag.name]({ fill: this.props.color }));
+    const tags = this.props.tags.filter(tag => svgs[tag.name]).map(tag => svgs[tag.name]({ fill: this.props.color }));
     return (
       <div className="tags">
         {tags}
