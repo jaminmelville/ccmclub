@@ -11,7 +11,7 @@ import Tags from './Tags';
 import Link from './Link';
 import Video from './Video';
 import Map from './Map';
-import OnamissionMap from './OnamissionMap';
+import OnamissionMaps from './OnamissionMaps';
 import Sponsors from './Sponsors';
 import $ from 'jquery';
 import { Foundation } from 'foundation-sites/js/foundation.core';
@@ -181,7 +181,7 @@ class Event  extends React.Component {
           />
         }
         <Route path="/events/onamission">
-          <OnamissionMap />
+          <OnamissionMaps />
         </Route>
       </>
     );

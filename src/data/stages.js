@@ -1,0 +1,88 @@
+import svgs from '../components/Svgs';
+
+export default {
+  'short': [
+    {
+      latlngs: [],
+      elevations: [],
+      svg: svgs.kayak,
+      id: 'kayak-to-dunk',
+      title: 'Kayak to Dunk stage',
+      distance: '4km',
+    },
+    {
+      latlngs: [],
+      elevations: [],
+      svg: svgs.run,
+      id: 'run-on-dunk',
+      title: 'Run on Dunk stage',
+      distance: '6km',
+    },
+    {
+      latlngs: [],
+      elevations: [],
+      svg: svgs.kayak,
+      id: 'kayak-to-mainland',
+      title: 'Kayak to Mainland stage',
+      distance: '4km',
+    },
+    {
+      latlngs: [],
+      elevations: [],
+      svg: svgs.bike,
+      id: 'bike',
+      title: 'Bike stage',
+      distance: '24km',
+    },
+    {
+      latlngs: [],
+      elevations: [],
+      svg: svgs.run,
+      id: 'run-on-mainland',
+      title: 'Mainland run stage',
+      distance: '4km',
+    },
+  ],
+  'long':  [
+    {
+      latlngs: [],
+      elevations: [],
+      svg: svgs.kayak,
+      id: 'kayak-to-dunk',
+      title: 'Kayak to Dunk stage',
+      distance: '8km',
+    },
+    {
+      latlngs: [],
+      elevations: [],
+      svg: svgs.run,
+      id: 'run-on-dunk',
+      title: 'Run on Dunk stage',
+      distance: '11km',
+    },
+    {
+      latlngs: [],
+      elevations: [],
+      svg: svgs.kayak,
+      id: 'kayak-to-mainland',
+      title: 'Kayak to Mainland stage',
+      distance: '4km',
+    },
+    {
+      latlngs: [],
+      elevations: [],
+      svg: svgs.bike,
+      id: 'bike',
+      title: 'Bike stage',
+      distance: '30km',
+    },
+    {
+      latlngs: [],
+      elevations: [],
+      svg: svgs.run,
+      id: 'run-on-mainland',
+      title: 'Mainland run stage',
+      distance: '10km',
+    },
+  ],
+}
