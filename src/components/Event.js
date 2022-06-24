@@ -29,9 +29,6 @@ class Event  extends React.Component {
     const time = moment(this.props.event.acf.date, 'M/D/YY h:mm a');
     const buttons = [];
     const slug = this.props.event.slug;
-    if (this.props.event.acf.youtube_url) {
-      buttons.push({ name: 'Video', url: `/events/${slug}#video` });
-    }
     let hasMap = !!this.props.event.acf.map_embed
     if (hasMap) {
       const match = this.props.event.acf.map_embed.match(/mid=([^&]*)/);
@@ -44,6 +41,9 @@ class Event  extends React.Component {
     if (slug === 'onamission') {
       buttons.push({ name: 'Map', url: `/events/${slug}#map` });
       hasMap = false;
+    }
+    if (this.props.event.acf.youtube_url) {
+      buttons.push({ name: 'Video', url: `/events/${slug}#video` });
     }
     if (this.props.event.results.length) {
       buttons.push({ name: 'Results', children: this.props.event.results });
@@ -165,6 +165,14 @@ class Event  extends React.Component {
           {/* eslint-disable react/no-danger */}
           <p dangerouslySetInnerHTML={{ __html: this.props.event.content.rendered }} />
         </Content>
+        {hasMap &&
+          <Map
+            data={this.props.event}
+          />
+        }
+        <Route path="/events/onamission">
+          <OnamissionMaps />
+        </Route>
         {this.props.event.sponsors.length > 0 &&
           <Sponsors
             sponsors={this.props.event.sponsors}
@@ -175,14 +183,6 @@ class Event  extends React.Component {
             data={this.props.event}
           />
         }
-        {hasMap &&
-          <Map
-            data={this.props.event}
-          />
-        }
-        <Route path="/events/onamission">
-          <OnamissionMaps />
-        </Route>
       </>
     );
   }

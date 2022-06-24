@@ -10,10 +10,6 @@ export default function OnamissionMaps() {
       id="map"
       background="https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/map.jpg"
     >
-        <a className="thumbnail" href={`${process.env.PUBLIC_URL}/2020 OAM Course Map.jpg`} target="_blank">
-          <img src={`${process.env.PUBLIC_URL}/2020 OAM Course Map thumb.jpg`} />
-        </a>
-        <div className="cell small-4">Click on the image to view full size</div>
       <div className="text-center margin-bottom-2">
         <fieldset className="fieldset">
           <legend>Course</legend>
@@ -33,6 +29,10 @@ export default function OnamissionMaps() {
         </fieldset>
       </div>
       <OnamissionMap key={course} course={course} />
+      <a className="thumbnail" href={`${process.env.PUBLIC_URL}/2020 OAM Course Map.jpg`} target="_blank">
+        <img src={`${process.env.PUBLIC_URL}/2020 OAM Course Map thumb.jpg`} />
+      </a>
+      <div className="cell small-4">Click on the image to view full size</div>
     </Content>
   );
 }

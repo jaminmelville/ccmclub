@@ -118,7 +118,7 @@ class OnamissionMap extends Component {
       </li>
     ))
     return (
-      <div className="onamission-map">
+      <div className="onamission-map margin-bottom-3">
         <div className="flex-container margin-bottom-2">
           <ul className="flex-container flex-dir-column align-spaced padding-horizontal-2">
             {stageOverviews}

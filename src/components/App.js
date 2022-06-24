@@ -9,7 +9,7 @@ import Events from './Events';
 import Contact from './Contact';
 import Menu from './Menu';
 import Page from './Page';
-import Sponsors from './Sponsors';
+import FixedSponsors from './FixedSponsors';
 
 class App extends Component {
 
@@ -119,7 +119,7 @@ class App extends Component {
         <Route path="/" exact>
           <>
             <Events events={this.state.events} />
-            <Sponsors
+            <FixedSponsors
               sponsors={featuredSponsors}
             />
             {pages}
