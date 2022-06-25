@@ -32,7 +32,7 @@ export default class FixedSponsors extends Component {
     ));
     return (
       <Content
-        title="Sponsors"
+        title="Club Sponsors"
         background="https://s3-ap-southeast-2.amazonaws.com/ccmclub/manual/mud.jpg"
       >
         <div className="grid-x grid-margin-x grid-margin-y align-center-middle">
