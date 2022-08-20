@@ -51,6 +51,10 @@ class Event  extends React.Component {
     if (this.props.event.photos.length) {
       buttons.push({ name: 'Photos', children: this.props.event.photos });
     }
+    if (slug === 'onamission') {
+      buttons.push({ name: 'Vounteer', url: "https://forms.gle/1irPpuuLV3gxBewt9" });
+      hasMap = false;
+    }
     let imgSrc = false;
     try {
       imgSrc = this.props.event.acf.feature_image.sizes.medium;
